@@ -2,6 +2,8 @@ import React from 'react'
 import style from './Navbar.module.scss'
 import {HiOutlineMenuAlt1} from 'react-icons/hi'
 import {BsInstagram, BsFacebook} from 'react-icons/bs'
+import logo from '../../public/assets/logo.png'
+import Image from 'next/image'
 import Link from 'next/link'
 
 function Navbar() {
@@ -13,6 +15,7 @@ function Navbar() {
         </div>
 
         <div className={style.title}>
+            {/* <Image src={logo} alt='Logo' width={70} height={70} /> */}
             <h1>Glitch Cloud</h1>
             <p>PHOTOGRAPHY</p>
         </div>

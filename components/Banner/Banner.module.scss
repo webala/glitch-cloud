@@ -1,0 +1,37 @@
+.banner {
+    position: relative;
+
+    .banner_image {
+        filter: brightness(40%);
+    }
+    .banner_text_container {
+        position: absolute;
+        top: 20%;
+        padding-left: 5%;
+
+        h1 {
+            font-size: 14px;
+            margin: 10px 0;
+            span {
+                color: orangered;
+            }
+        }
+
+        p {
+            font-size: 12px;
+            font-weight: 700;
+        }
+    }
+
+    @media (min-width: 700px) {
+        .banner_text_container {
+            h1 {
+                font-size: 36px;
+            }
+
+            p {
+                font-size: 20px;
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+.testimonials {
+    background: var(--backgroundPrimary);
+    padding: 50px 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .heading {
+        color: orangered;
+    }
+
+    .testimony {
+        background: var(--backgroundSecondary);
+        border-radius: 16px;
+        margin: 50px;
+        padding: 50px;
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .name {
+                color: orangered;
+            }
+        }
+    }
+    
+}

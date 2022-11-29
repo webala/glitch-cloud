@@ -6,11 +6,14 @@ import banner from '../../public/assets/banner.jpg'
 function Banner() {
   return (
     <div className={style.banner}>
-        <Image className={style.banner_image} src={banner} alt="banner" layout='intrinsic'/>
+        <Image width={1600} className={style.banner_image} src={banner} alt="banner" />
         <div className={style.banner_text_container}>
-            <h1>HELLO!</h1>
-            <h1>WE ARE <span>GLITCH CLOUD PHOTOGRAPHY</span> </h1>
+            <h1><span>GLITCH CLOUD PHOTOGRAPHY</span> </h1>
             <p>CREATIVE DIGITAL MEDIA</p>
+        </div>
+
+        <div className={style.banner_sub_text_container}>
+          <p>photo shoots, cool edits, awesome videography</p>
         </div>
     </div>
   )

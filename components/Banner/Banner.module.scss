@@ -1,14 +1,17 @@
 .banner {
     position: relative;
     background: var(--backgroundSecondary);
+    padding: 50px 5%;
 
     .banner_image {
-        filter: brightness(40%);
+        filter: brightness(40%) drop-shadow(20px 20px 50px orangered);
+        width: 100%;
+        height: auto;
     }
     .banner_text_container {
         position: absolute;
         top: 20%;
-        padding-left: 5%;
+        padding-left: 2%;
 
         h1 {
             font-size: 14px;
@@ -24,7 +27,19 @@
         }
     }
 
+    .banner_sub_text_container {
+        position: absolute;
+        bottom: 15%;
+        padding-left: 2%;
+        color: orangered;
+        font-weight: 700;
+        font-size: 12px;
+    }
+
     @media (min-width: 700px) {
+
+        padding: 0px 10%;
+        padding-top: 100px;
         .banner_text_container {
             h1 {
                 font-size: 36px;
@@ -33,6 +48,10 @@
             p {
                 font-size: 20px;
             }
+        }
+
+        .banner_sub_text_container {
+            font-size: 19px;
         }
     }
 }

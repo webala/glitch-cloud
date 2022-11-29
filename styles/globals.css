@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Monoton&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 html,
 body {
   padding: 0;
@@ -9,8 +9,9 @@ body {
 
     --backgroundPrimary: #171826;
     --backgroundSecondary: #0c0d14;
-    --fontPrimary: 'Inconsolata', monospace;
-    --fontSecondary: 'Abril Fatface', cursive;
+    --titleFont: 'Monoton', cursive;
+    --fontPrimary: 'Space Mono', monospace;
+    --fontSecondary: 'Major Mono Display', monospace;
 
     color: white;
 
@@ -22,7 +23,7 @@ h1 {
   font-family: var(--fontSecondary);
 }
 
-p {
+p, li {
   font-family: var(--fontPrimary);
 }
 

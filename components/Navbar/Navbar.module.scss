@@ -15,7 +15,9 @@
         }
 
         .social {
+            display: flex;
             gap: 10px;
+            margin-top: 10px;
 
             .icon {
                 transition: all .2s ease-in;

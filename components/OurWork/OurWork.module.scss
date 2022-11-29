@@ -21,8 +21,8 @@
         gap: 10px;
         
         .image {
-            width: 150px;
-            height: auto;
+            height: 200px;
+            width: auto;
         }
     }
 
@@ -45,11 +45,14 @@
     }
 
     @media (min-width: 700px) {
+        .heading {
+            font-size: 32px;
+        }
         .our_work {
             grid-template-columns: 1fr 1fr 1fr;
 
             .image {
-                width: 250px;
+                height: 300px;
             }
         }
     }

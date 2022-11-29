@@ -1,7 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.css'
-import '../styles/globals.css'
+
 import type { AppProps } from 'next/app'
+import{ChakraProvider} from '@chakra-ui/react'
+import '../styles/globals.css'
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return <ChakraProvider> <Component {...pageProps} /> </ChakraProvider>
 }

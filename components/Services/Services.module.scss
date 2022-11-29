@@ -13,6 +13,14 @@
         color: orangered
         
     }
+
+    @media (min-width: 700px) {
+
+        .services_heading {
+            font-size: 32px;
+        }
+        
+    }
 }
 
 .weddings, .ruracio, .portraits {

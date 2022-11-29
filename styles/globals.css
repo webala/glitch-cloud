@@ -13,9 +13,7 @@ body {
     --fontPrimary: 'Space Mono', monospace;
     --fontSecondary: 'Major Mono Display', monospace;
 
-    color: white;
-
-    
+    color: white !important;
 
 }
 

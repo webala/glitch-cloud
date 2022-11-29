@@ -7,7 +7,7 @@ import style from './Services.module.scss'
 function Services() {
   return (
     <div className={style.services}>
-        <h1 className={style.services_heading}>Our Services</h1>
+        <h1 className={style.services_heading}>Services</h1>
         <Weddings />
         <Ruracio />
         <Portrait />

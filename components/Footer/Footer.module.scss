@@ -1,0 +1,12 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+    background: var(--backgroundPrimary);
+    padding: 50px 10%;
+
+    @media (min-width: 700px) {
+        flex-direction: row;
+    }
+}

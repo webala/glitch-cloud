@@ -71,11 +71,12 @@
         justify-content: space-between;
         gap: 30px;
         border-bottom: none;
-        border-right: 1px solid orangered;
-        padding-right: 30px;
+        
       }
 
       .form {
+        border-left: 1px solid orangered;
+        padding-left: 30px;
         .form_field {
             margin: 20px 0
         }

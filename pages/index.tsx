@@ -3,6 +3,7 @@ import Image from 'next/image'
 import About from '../components/About/About'
 import Banner from '../components/Banner/Banner'
 import Contact from '../components/Contact/Contact'
+import Footer from '../components/Footer/Footer'
 import Navbar from '../components/Navbar/Navbar'
 import OurWork from '../components/OurWork/OurWork'
 import Services from '../components/Services/Services'
@@ -26,6 +27,7 @@ export default function Home() {
       <About />
       <Testimonisls />
       <Contact />
+      <Footer/>
     </div>
   )
 }

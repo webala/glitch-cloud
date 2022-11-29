@@ -11,7 +11,7 @@ function Testimonisls() {
                     <div className={style.testimony}>
                         <div className={style.header}>
                             <p className={style.name}>@webala</p>
-                            <p>11th June</p>
+                            <p>June 2022</p>
                         </div>
                         <p>He has heart, he has passion</p>
                     </div>
@@ -20,7 +20,7 @@ function Testimonisls() {
                     <div className={style.testimony}>
                         <div className={style.header}>
                             <p className={style.name}>@webala</p>
-                            <p>11th June</p>
+                            <p>June 2022</p>
                         </div>
                         <p>He has heart, he has passion</p>
                     </div>
@@ -29,7 +29,7 @@ function Testimonisls() {
                     <div className={style.testimony}>
                         <div className={style.header}>
                             <p className={style.name}>@webala</p>
-                            <p>11th June</p>
+                            <p>June 2022</p>
                         </div>
                         <p>He has heart, he has passion</p>
                     </div>

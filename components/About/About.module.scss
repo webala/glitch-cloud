@@ -1,0 +1,41 @@
+.about {
+    background: var(--backgroundSecondary);
+    padding: 70px 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .heading {
+        color: orangered;
+        margin-bottom: 10px;
+    }
+
+    .about_image {
+        // width: 50%;
+        height: auto;
+        float: right;
+        margin: 0 0 10px 10px;
+    }
+
+    p {
+        font-size: 14px;
+        margin: 12px 0;
+        line-height: 2em;
+    }
+
+    @media (min-width: 700px) {
+        padding: 100px 20%;
+
+
+        .heading {
+            margin-bottom: 50px;
+        }
+        .about_image {
+            margin: 0 0 20px 20px;
+        }
+
+        p{
+            text-align: justify;
+        }
+    }
+}

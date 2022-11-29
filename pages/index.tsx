@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import About from '../components/About/About'
 import Banner from '../components/Banner/Banner'
 import Navbar from '../components/Navbar/Navbar'
 import OurWork from '../components/OurWork/OurWork'
@@ -19,7 +20,7 @@ export default function Home() {
       <Banner />
       <OurWork />
       <Services />
-      
+      <About />
     </div>
   )
 }

@@ -1,0 +1,95 @@
+.services {
+    background: var(--backgroundPrimary);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 70px;
+    padding: 20px 10%;
+
+    .services_heading {
+    
+        font-size: 17px;
+        color: orangered
+        
+    }
+}
+
+.weddings, .ruracio, .portraits {
+    width: 100%;
+    .heading {
+        h1 {
+            font-size: 14px;
+            color: orangered;
+            margin-bottom: 20px;
+        }
+    }
+
+    .categories {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+
+        h2 {
+            font-size: 14px;
+            font-weight: 700;
+            border-bottom: 1px solid orangered;
+        }
+
+        
+
+        .packages {
+            .package {
+                margin: 20px 0;
+                h3 {
+                    font-size: 14px;
+                    margin-bottom: 5px;
+                    text-decoration: underline;
+                }
+
+                li {
+                    font-size: 12px;
+                    margin-left: 15px;
+                }
+
+                .price {
+                    color: orangered;
+                    margin-top: 7px;
+                }
+            }
+        }
+        
+    }
+
+    @media (min-width: 700px) {
+        .heading {
+            h1 {
+                font-size: 26px;
+            }
+        }
+
+        .categories {
+            h2 {
+                font-size: 19px;
+            }
+
+            .packages {
+                display: flex;
+                gap: 20px;
+                align-items: flex-start;
+
+                .package {
+                    h3 {
+                        font-size: 16px;
+                    }
+    
+                    li {
+                        font-size: 14px;
+                    }
+                }
+               
+            }
+        }
+    }
+}

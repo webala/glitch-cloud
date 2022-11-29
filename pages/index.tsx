@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Banner from '../components/Banner/Banner'
 import Navbar from '../components/Navbar/Navbar'
 import OurWork from '../components/OurWork/OurWork'
+import Services from '../components/Services/Services'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
       <Navbar />
       <Banner />
       <OurWork />
+      <Services />
       
     </div>
   )

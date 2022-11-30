@@ -17,13 +17,9 @@ body {
 
 }
 
-h1 {
-  font-family: var(--fontSecondary);
-}
 
-p, li {
-  font-family: var(--fontPrimary);
-}
+
+
 
 a {
   color: inherit;
@@ -34,6 +30,10 @@ a {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: var(--fontPrimary);
 }
 
 
+h1 {
+  font-family: var(--fontSecondary);
+}

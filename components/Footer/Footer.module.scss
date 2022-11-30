@@ -6,7 +6,16 @@
     background: var(--backgroundPrimary);
     padding: 50px 10%;
 
+    .socials, p {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+
+
     @media (min-width: 700px) {
         flex-direction: row;
+        align-items: center;
     }
 }

@@ -8,7 +8,7 @@ function Banner() {
     <div className={style.banner}>
         <Image width={1600} className={style.banner_image} src={banner} alt="banner" />
         <div className={style.banner_text_container}>
-            <h1><span>GLITCH CLOUD PHOTOGRAPHY</span> </h1>
+            <h1>GLITCH CLOUD PHOTOGRAPHY</h1>
             <p>CREATIVE DIGITAL MEDIA</p>
         </div>
 

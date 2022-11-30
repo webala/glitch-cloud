@@ -9,8 +9,11 @@ function Services() {
     <div className={style.services}>
         <h1 className={style.services_heading}>Services</h1>
         <Weddings />
-        <Ruracio />
-        <Portrait />
+
+        <div className={style.micro_service}>
+          <Ruracio />
+          <Portrait />
+        </div>
     </div>
   )
 }

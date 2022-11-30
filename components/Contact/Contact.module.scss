@@ -5,21 +5,33 @@
   align-items: center;
   padding: 50px 10%;
 
+  .heading {
+    color: orangered;
+    margin: 40px 0;
+  }
+
   .contact {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 
     .contact_details {
       display: flex;
+      flex-direction: column;
+      align-items: flex-start;
       flex-wrap: wrap;
       justify-content: space-between;
       border-bottom: 1px solid orangered;
 
       div {
         display: flex;
-        flex-direction: column;
-        align-items: flex-end;
+        align-items: center;
+        margin: 10px 0;
+      
+        .icon {
+          color: orangered;
+          margin-right: 5px;
+        }
       }
     }
 
@@ -65,12 +77,24 @@
       justify-content: center;
       width: 100%;
       gap: 30px;
+      
+
+      .heading {
+        font-size: 36px;
+      }
+    
 
       .contact_details {
         flex-direction: column;
         justify-content: space-between;
+        align-items: flex-end;
         gap: 30px;
         border-bottom: none;
+
+        div {
+          flex-direction: column;
+          align-items: flex-end;
+        }
         
       }
 
@@ -81,6 +105,15 @@
             margin: 20px 0
         }
       }
+    }
+  }
+
+  @media (min-width: 700px) {
+    padding: 200px 10%;
+
+    .heading {
+      font-size: 36px;
+      margin-bottom: 100px;
     }
   }
 }

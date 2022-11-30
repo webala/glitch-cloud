@@ -11,12 +11,8 @@ function Footer() {
             <Link href="#"><BsFacebook /> </Link>
             <Link href="#"><BsInstagram /> </Link>
         </div>
-
         <Link href="#"> Terms of service</Link>
-
-        
-            
-         <p><AiOutlineCopyrightCircle /> 2022 Glitch Cloud Photography</p>
+        <p><AiOutlineCopyrightCircle /> 2022 Glitch Cloud Photography</p>
         
     </div>
   )

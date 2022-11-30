@@ -2,24 +2,25 @@ import React from 'react'
 import style from './Contact.module.scss'
 import {AiOutlinePhone} from 'react-icons/ai'
 import {HiOutlineMail} from 'react-icons/hi'
-import {GrLocation} from 'react-icons/gr'
+
+import {GoLocation} from 'react-icons/go'
 
 function Contact() {
   return (
     <div className={style.contact_container}>
-        <h1>Contact Me</h1>
+        <h1 className={style.heading} >Contact Me</h1>
         <div className={style.contact}>
         <div className={style.contact_details}>
             <div>
-              <AiOutlinePhone />
+              <AiOutlinePhone className={style.icon}/>
               <p>+2547907674</p>
             </div>
             <div>
-              <HiOutlineMail />
+              <HiOutlineMail className={style.icon}/>
               <p>glitchcloud@gmail.com</p>
             </div>
             <div>
-              <GrLocation />
+              <GoLocation className={style.icon}/>
               <p>Thika</p>
             </div>
         </div>

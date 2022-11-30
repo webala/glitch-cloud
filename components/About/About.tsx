@@ -8,7 +8,7 @@ function About() {
     
     <div className={style.about}>
         <h1 className={style.heading}>About</h1>
-        <div>
+        <div className={style.about_text_container}>
                 <Image className={style.about_image} width={200} src={mosh} alt='mosh' />
                 <p>
                     Meet Brendan, the CEO and founder of Glitch Cloud Photography.

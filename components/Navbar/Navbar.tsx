@@ -13,12 +13,12 @@ function Navbar() {
   return (
     <div className={style.nav_bar}>
         <div className={style.nav_item}>
-            <Link href="#" className={style.menu_btn_text}>Services</Link>
+            <Link href="#services" className={style.menu_btn_text}>Services</Link>
             <AiFillCamera className={style.icon}/>
         </div>
 
         <div className={style.nav_item}>
-            <Link href="#" className={style.menu_btn_text}>Our Work</Link>
+            <Link href="#our_work" className={style.menu_btn_text}>Our Work</Link>
             <IoMdPhotos className={style.icon}/>
         </div>
 
@@ -33,12 +33,12 @@ function Navbar() {
         </div>
 
         <div className={style.nav_item}>
-            <Link href="#" className={style.menu_btn_text}>Client Stories</Link>
+            <Link href="#client_stories" className={style.menu_btn_text}>Client Stories</Link>
             <SlSpeech className={style.icon}/>
         </div>
 
         <div className={style.nav_item}>
-            <Link href="#" className={style.menu_btn_text}>Contact</Link>
+            <Link href="#contact" className={style.menu_btn_text}>Contact</Link>
             <AiFillPhone className={style.icon}/>
         </div>
 

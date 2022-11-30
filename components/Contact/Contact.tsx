@@ -2,12 +2,24 @@ import React from 'react'
 import style from './Contact.module.scss'
 import {AiOutlinePhone} from 'react-icons/ai'
 import {HiOutlineMail} from 'react-icons/hi'
-
 import {GoLocation} from 'react-icons/go'
+import { useToast } from '@chakra-ui/react'
 
 function Contact() {
+
+  const toast = useToast()
+
+  const handleSendMessage = () => {
+    toast({
+      title: 'Opps!',
+      description: "This part of the site is still under constrction",
+      status: 'success',
+      duration: 9000,
+      isClosable: true,
+    })
+  }
   return (
-    <div className={style.contact_container}>
+    <div className={style.contact_container} id="contact">
         <h1 className={style.heading} >Contact Me</h1>
         <div className={style.contact}>
         <div className={style.contact_details}>
@@ -45,7 +57,6 @@ function Contact() {
             </div>
         </form>
         </div>
-        
     </div>
   )
 }

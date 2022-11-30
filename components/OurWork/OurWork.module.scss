@@ -21,8 +21,8 @@
         gap: 10px;
         
         .image {
-            height: 200px;
-            width: auto;
+            width: 200px;
+            height: auto;
         }
     }
 
@@ -52,7 +52,7 @@
             grid-template-columns: 1fr 1fr 1fr;
 
             .image {
-                height: 300px;
+                width: 300px;
             }
         }
     }

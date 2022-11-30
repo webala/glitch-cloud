@@ -4,7 +4,7 @@ import {ImQuotesRight} from 'react-icons/im'
 
 function Testimonisls() {
   return (
-    <div className={style.testimonials}>
+    <div className={style.testimonials} id="client_stories">
         <h1 className={style.heading}>Our clients speak</h1>
         <ImQuotesRight className={style.quote} />
         <div id="carouselExampleFade" className="carousel slide carousel-fade" data-bs-ride="carousel">

@@ -25,8 +25,8 @@ function About() {
         </p>
         <p>
           I believe everyone should have the oportunity to feel beautiful in a
-          photograph so i'll guide you through your photography sessions and
-          ease all your "i'm awkward" fears.
+          photograph so i&apos;ll guide you through your photography sessions
+          and ease all your &quot;i&apos;m awkward&quot; fears.
         </p>
         <p>
           Wheather you are comfortable or shy in from of a camera, my sessions

@@ -8,12 +8,12 @@ function Weddings() {
   return (
     <div className={style.weddings}>
       <div className={style.heading}>
-        <h1 className="">Weddings</h1>
+        <h1 >Weddings</h1>
       </div>
       <div className={style.categories}>
         <div className={style.category}>
           <div>
-            <h2 className="">Photography</h2>
+            <h2 >Photography</h2>
 
             <Tabs defaultIndex={1}>
               <div className={style.tab_list}>
@@ -31,7 +31,7 @@ function Weddings() {
               <TabPanels>
                 <TabPanel>
                   <div>
-                    <ul className="">
+                    <ul >
                       <li>2 photographers</li>
                       <li>Coverage of preparations (Bride, Groom, Church)</li>
                       <li>
@@ -44,13 +44,13 @@ function Weddings() {
                       <li>A4 Photobook of 20 pages(wedding day photos)</li>
                     </ul>
                     <div className={style.price}>
-                      <p className="">ksh 33000</p>
+                      <p >ksh 33000</p>
                     </div>
                   </div>
                 </TabPanel>
                 <TabPanel>
                   <div>
-                    <ul className="">
+                    <ul >
                       <li>2 photographers</li>
                       <li>Pre-wedding shoot (before D-day)</li>
                       <li>Coverage of preparations (Bride, Groom, Church)</li>
@@ -68,17 +68,18 @@ function Weddings() {
                       </li>
                     </ul>
                     <div className={style.price}>
-                      <p className="">ksh 51000</p>
+                      <p >ksh 51000</p>
                     </div>
                   </div>
                 </TabPanel>
                 <TabPanel>
                   <div>
-                    <ul className="">
+                    <ul >
                       <li>2 photographers</li>
                       <li>Coverage of preparations (Bride, Groom, Church)</li>
                       <li>
-                        Unlimited photos of action throughout the day's event
+                        Unlimited photos of action throughout the day&apos;s
+                        event
                       </li>
                       <li>
                         Organized online gallery, Google drive link for backup
@@ -87,7 +88,7 @@ function Weddings() {
                       <li>100 printed photos</li>
                     </ul>
                     <div className={style.price}>
-                      <p className="">ksh 25000</p>
+                      <p >ksh 25000</p>
                     </div>
                   </div>
                 </TabPanel>
@@ -112,7 +113,7 @@ function Weddings() {
               <TabPanels>
                 <TabPanel>
                   <div>
-                    <ul className="">
+                    <ul >
                       <li>2 videographers</li>
                       <li>
                         Coverage of preparations (Morning, Wedding, Reception)
@@ -122,13 +123,13 @@ function Weddings() {
                       <li>8 GB flash disk with edited videos (60 min)</li>
                     </ul>
                     <div className={style.price}>
-                      <p className="">ksh 30000</p>
+                      <p >ksh 30000</p>
                     </div>
                   </div>
                 </TabPanel>
                 <TabPanel>
                   <div>
-                    <ul className="">
+                    <ul >
                       <li>2 videographers</li>
                       <li>1 drone pilot</li>
                       <li>

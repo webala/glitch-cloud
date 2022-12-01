@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 import style from "../Services.module.scss";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
@@ -6,9 +8,7 @@ function Portrait() {
   return (
     <div className={style.portraits}>
       <div className={style.heading}>
-        <h1 className="">
-          Portraits
-        </h1>
+        <h1 className="">Portraits</h1>
       </div>
       <Tabs defaultIndex={1}>
         <div className={style.tab_list}>
@@ -50,7 +50,7 @@ function Portrait() {
             </div>
           </TabPanel>
           <TabPanel>
-          <div>
+            <div>
               <ul className="list-disc">
                 <li>10 retoruched images</li>
                 <li>Make Up</li>

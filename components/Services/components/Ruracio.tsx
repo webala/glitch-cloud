@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 import style from "../Services.module.scss";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";

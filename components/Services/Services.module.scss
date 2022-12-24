@@ -1,126 +1,189 @@
+/** @format */
+
 .services {
-    background: var(--backgroundPrimary);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 50px 10%;
+     background: var(--backgroundPrimary);
+     display: flex;
+     flex-direction: column;
+     align-items: flex-start;
+     padding: 50px 10%;
 
-    .services_heading  {
-        color: orangered;
-        margin: 50px 0;
-    }
+     .services_heading {
+          color: orangered;
+          margin: 50px 0;
 
-    .weddings {
-        width: 100%;
-        margin-top: 20px;
+          @media (min-width: 768px) {
+               font-size: 32px;
+          }
 
-        .heading {
-            color: orangered;
-            margin: 10px 0;
-        }
+          @media (min-width: 1028px) {
+               font-size: 45px;
+          }
+     }
 
-        .categories {
-            h2 {
-                font-weight: 700;
-            }
+     .weddings {
+          width: 100%;
+          margin-top: 20px;
 
-            .category {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
+          .heading {
+               color: orangered;
+               margin: 10px 0;
 
-                .item {
-                    background: var(--backgroundSecondary);
-                    margin: 20px 0;
-                    padding: 10px;
-                    border-radius: 5px;
+               @media (min-width: 768px) {
+                    font-size: 24px;
+               }
+
+               @media (min-width: 1028px) {
+                    font-size: 36px;
+               }
+          }
+
+          .categories {
+               h2 {
+                    font-weight: 700;
+               }
+
+               .category {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+
+                    .item {
+                         background: var(--backgroundSecondary);
+                         margin: 20px 0;
+                         padding: 5px 30px;
+                         border-radius: 5px;
+
+                         .price {
+                              color: orangered;
+                              margin: 20px 0;
+                              display: flex;
+                              justify-content: space-between;
+
+                              button {
+                                font-size: 24px;
+                              }
+                         }
+
+                         h2 {
+                              font-weight: 600;
+                              font-size: 20px;
+                              margin: 30px 0;
+                         }
+
+                         @media (min-width: 1028px) {
+                              margin: 0 20px;
+                         }
+                    }
 
                     @media (min-width: 1028px) {
-                        margin: 0 20px;
+                         flex-direction: row;
+                         align-items: flex-start;
                     }
-                }
+               }
 
-                @media (min-width: 1028px) {
-                    flex-direction: row;
-                    align-items: flex-start;
-                }
-            }
+               .tab_list {
+                    display: flex;
+                    justify-content: center;
+                    color: orangered;
+               }
+          }
+     }
 
-            .tab_list {
-                display: flex;
-                justify-content: center;
+     .ruracio {
+          margin-top: 30px;
+          .heading {
+               color: orangered;
+               @media (min-width: 768px) {
+                    font-size: 24px;
+               }
 
-              
-            }
-        }
-    }
+               @media (min-width: 1028px) {
+                    font-size: 36px;
+               }
+          }
 
-    .ruracio {
-        margin-top: 30px;
-        .heading {
-            color: orangered;
-        }
+          .items {
+               .item {
+                    background: var(--backgroundSecondary);
+                    margin: 20px 0;
+                    padding: 5px 30px;
+                    border-radius: 5px;
 
-        .item {
-            background: var(--backgroundSecondary);
-            margin: 20px 0;
-            padding: 10px;
-            border-radius: 5px;
+                    h2 {
+                         font-weight: 600;
+                         font-size: 20px;
+                         margin: 30px 0;
+                    }
 
-            @media (min-width: 1028px) {
-                margin: 0 20px;
-            }
-        }
+                    @media (min-width: 1028px) {
+                         margin: 0 20px;
+                    }
 
-        .tab_list {
-            display: flex;
-            justify-content: center;
-        }
-    }
+                    .package {
+                         ul {
+                              position: relative;
+                              left: 10px;
+                         }
+                    }
 
-    .portraits {
-        margin-top: 30px;
-        .heading {
-            color: orangered;
-        }
+                    .price {
+                         color: orangered;
+                         margin: 20px 0;
+                    }
+               }
 
-        .item {
-            background: var(--backgroundSecondary);
-            margin: 20px 0;
-            padding: 10px;
-            border-radius: 5px;
+               @media (min-width: 768px) {
+                    display: flex;
+                    gap: 20px;
+               }
+          }
+     }
 
-            @media (min-width: 1028px) {
-                margin: 0 20px;
-            }
-        }
+     .portraits {
+          margin-top: 30px;
+          .heading {
+               color: orangered;
+               @media (min-width: 768px) {
+                    font-size: 24px;
+               }
 
-        .tab_list {
-            display: flex;
-            justify-content: center;
-        }
-    }
+               @media (min-width: 1028px) {
+                    font-size: 36px;
+               }
+          }
 
-    .micro_service {
-        width: 100%;
+          .item {
+               background: var(--backgroundSecondary);
+               margin: 20px 0;
+               padding: 5px 30px;
+               border-radius: 5px;
 
-        @media (min-width: 700px) {
-            margin: 200px 0;
-            display: flex;
-            gap: 20%;
-        }
+               h2 {
+                    font-weight: 600;
+                    font-size: 20px;
+                    margin: 30px 0;
+               }
 
-        @media (min-width: 1200px) {
+               .price {
+                    color: orangered;
+                    margin: 20px 0;
+               }
 
-            gap: 30%;
-            
-            
-        }
-    }
+               @media (min-width: 1028px) {
+                    margin-bottom: 10px;
+               }
+          }
 
-    @media (min-width: 700px) {
-        .services_heading {
-            font-size: 36px;
-        }
-    }
+          .tab_list {
+               display: flex;
+               justify-content: center;
+               color: orangered;
+          }
+     }
+
+     @media (min-width: 700px) {
+          .services_heading {
+               font-size: 36px;
+          }
+     }
 }

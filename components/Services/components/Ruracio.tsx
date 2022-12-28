@@ -1,9 +1,10 @@
 /** @format */
 
 import React from "react";
+import { BsFillBookmarkPlusFill } from "react-icons/bs";
 import style from "../Services.module.scss";
 
-function Ruracio() {
+function Ruracio({ selectPackage, btnRef, onOpen }) {
      return (
           <div className={style.ruracio}>
                <div className={style.heading}>
@@ -23,6 +24,20 @@ function Ruracio() {
                               </ul>
                               <div className={style.price}>
                                    <p className="">ksh 11000</p>
+
+                                   <button
+                                        ref={btnRef}
+                                        onClick={() => {
+                                             onOpen();
+                                             selectPackage({
+                                                  nature: "PHOTOGRAHY",
+                                                  type: "RURACIO",
+                                             });
+                                        }}
+                                   >
+                                        <p>Book now</p>
+                                        <BsFillBookmarkPlusFill />
+                                   </button>
                               </div>
                          </div>
                     </div>
@@ -42,6 +57,20 @@ function Ruracio() {
                               </ul>
                               <div className={style.price}>
                                    <p className="">ksh 22000</p>
+
+                                   <button
+                                        ref={btnRef}
+                                        onClick={() => {
+                                             onOpen();
+                                             selectPackage({
+                                                  nature: "VIDEOGRAPHY",
+                                                  type: "RURACIO",
+                                             });
+                                        }}
+                                   >
+                                        <p>Book now</p>
+                                        <BsFillBookmarkPlusFill />
+                                   </button>
                               </div>
                          </div>
                     </div>

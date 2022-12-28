@@ -3,8 +3,9 @@
 import React from "react";
 import style from "../Services.module.scss";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+import { BsFillBookmarkPlusFill } from "react-icons/bs";
 
-function Portrait() {
+function Portrait({ selectPackage, btnRef, onOpen }) {
      return (
           <div className={style.portraits}>
                <div className={style.heading}>
@@ -38,6 +39,20 @@ function Portrait() {
                                              <p className="text-textSecondary">
                                                   ksh 4000
                                              </p>
+                                             <button
+                                                  ref={btnRef}
+                                                  onClick={() => {
+                                                       onOpen();
+                                                       selectPackage({
+                                                            nature: "PHOTOGRAPHY",
+                                                            category: "SILVER",
+                                                            type: "PORTRAIT",
+                                                       });
+                                                  }}
+                                             >
+                                                  <p>Book now</p>
+                                                  <BsFillBookmarkPlusFill />
+                                             </button>
                                         </div>
                                    </div>
                               </TabPanel>
@@ -53,6 +68,20 @@ function Portrait() {
                                              <p className="text-textSecondary">
                                                   ksh 6000
                                              </p>
+                                             <button
+                                                  ref={btnRef}
+                                                  onClick={() => {
+                                                       onOpen();
+                                                       selectPackage({
+                                                            nature: "PHOTOGRAPHY",
+                                                            category: "GOLD",
+                                                            type: "PORTRAIT",
+                                                       });
+                                                  }}
+                                             >
+                                                  <p>Book now</p>
+                                                  <BsFillBookmarkPlusFill />
+                                             </button>
                                         </div>
                                    </div>
                               </TabPanel>
@@ -66,6 +95,20 @@ function Portrait() {
                                              <p className="text-textSecondary">
                                                   ksh 2500
                                              </p>
+                                             <button
+                                                  ref={btnRef}
+                                                  onClick={() => {
+                                                       onOpen();
+                                                       selectPackage({
+                                                            nature: "PHOTOGRAPHY",
+                                                            category: "BRONZE",
+                                                            type: "PORTRAIT",
+                                                       });
+                                                  }}
+                                             >
+                                                  <p>Book now</p>
+                                                  <BsFillBookmarkPlusFill />
+                                             </button>
                                         </div>
                                    </div>
                               </TabPanel>

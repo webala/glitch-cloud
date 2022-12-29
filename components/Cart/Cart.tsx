@@ -5,11 +5,20 @@ import style from "./Cart.module.scss";
 import { iSelectedPackages, iSelectedPackage } from "../Services/Services";
 import { AiOutlineDelete } from "react-icons/ai";
 import Link from "next/link";
+import {useDispatch} from 'react-redux'
+import {shootActions} from '../../store/shoot-slice'
 
 interface iCartProps {
    selectedPackages: iSelectedPackages;
    onClose: Function;
    setSelectedPackages: Function;
+}
+
+export interface iShoot {
+   client: object;
+   shoot: object;
+   packages: iSelectedPackages;
+   id?: number;
 }
 
 const Cart = ({
@@ -26,10 +35,12 @@ const Cart = ({
    const [location, setLocation] = useState<string>();
    const [date, setDate] = useState<Date>();
 
+   const dispatch = useDispatch()
+
    const handleBookShoot = async (e: React.SyntheticEvent) => {
       e.preventDefault();
 
-      const data = {
+      const data:iShoot = {
          client: {
             first_name,
             last_name,
@@ -49,11 +60,22 @@ const Cart = ({
       });
 
       if (response.status == 201) {
-          const savedShoot = await response.json();
-          console.log("saved shoot: ", savedShoot);
-      }
+         const savedShoot = await response.json();
+         // localStorage.setItem('shoots', [savedShoot.id])
+         const storedShoots = localStorage.getItem("shoots");
+         if (storedShoots) {
+            let shoots: number[] = JSON.parse(storedShoots);
+            shoots.push(savedShoot.id);
+            localStorage.setItem("shoots", JSON.stringify(shoots));
+         } else {
+            localStorage.setItem("shoots", JSON.stringify([savedShoot.id]));
+         }
+         data.id = savedShoot.id
+         dispatch(shootActions.setBookedShoot(data))
 
-      
+         setSelectedPackages([]);
+         console.log("saved shoot: ", savedShoot);
+      }
    };
 
    if (selectedPackages.length === 0) {
@@ -63,6 +85,7 @@ const Cart = ({
          </div>
       );
    }
+
    return (
       <div className={style.cart}>
          <div className={style.packages}>

@@ -1,0 +1,89 @@
+/** @format */
+
+.payment {
+   background: var(--backgroundPrimary);
+   min-height: 100vh;
+
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 10%;
+
+   .heading {
+      margin: 20px 0;
+      color: orangered;
+      text-decoration: underline;
+      text-underline-offset: 10px;
+
+      @media (min-width: 768px) {
+         font-size: 30px;
+         margin: 30px 0;
+      }
+   }
+
+   .shoot_summary {
+      p {
+         @media (min-width: 768px) {
+            font-size: 19px;
+         }
+      }
+      .packages {
+         margin: 29px 0;
+
+         h2 {
+            font-size: 19px;
+            margin-bottom: 5px;
+            color: orangered;
+
+            @media (min-width: 768px) {
+               font-size: 24px;
+            }
+         }
+
+         .package {
+            border: 1px solid orangered;
+            padding: 5px;
+            border-radius: 5px;
+            margin: 10px 0;
+            
+
+            @media (min-width: 768px) {
+               font-size: 24px;
+               margin: 20px 0;
+               width: 50%;
+            }
+         }
+      }
+
+      .phone_form {
+         form {
+            margin: 30px 0;
+
+            input {
+               height: 40px;
+               background: var(--backgroundSecondary);
+               padding: 5px;
+               border: 1px solid orangered;
+               border-radius: 5px;
+            }
+
+            button {
+               margin: 20px 0 0 5px;
+               background: orangered;
+               padding: 5px 20px;
+               border-radius: 5px;
+               transition: transform 0.3s ease-in;
+
+               @media (min-width: 768px) {
+                  margin: 40px 0 0 5px;
+                  padding: 7px 25px;
+               }
+            }
+
+            button:hover {
+               transform: scale(1.1);
+            }
+         }
+      }
+   }
+}

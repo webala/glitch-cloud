@@ -44,9 +44,9 @@ function Portrait({ selectPackage, btnRef, onOpen }) {
                                                   onClick={() => {
                                                        onOpen();
                                                        selectPackage({
-                                                            nature: "PHOTOGRAPHY",
-                                                            category: "SILVER",
-                                                            type: "PORTRAIT",
+                                                          nature: "PHOTOGRAHY",
+                                                          category: "SILVER",
+                                                          type: "PORTRAIT",
                                                        });
                                                   }}
                                              >
@@ -73,9 +73,9 @@ function Portrait({ selectPackage, btnRef, onOpen }) {
                                                   onClick={() => {
                                                        onOpen();
                                                        selectPackage({
-                                                            nature: "PHOTOGRAPHY",
-                                                            category: "GOLD",
-                                                            type: "PORTRAIT",
+                                                          nature: "PHOTOGRAHY",
+                                                          category: "GOLD",
+                                                          type: "PORTRAIT",
                                                        });
                                                   }}
                                              >
@@ -100,9 +100,9 @@ function Portrait({ selectPackage, btnRef, onOpen }) {
                                                   onClick={() => {
                                                        onOpen();
                                                        selectPackage({
-                                                            nature: "PHOTOGRAPHY",
-                                                            category: "BRONZE",
-                                                            type: "PORTRAIT",
+                                                          nature: "PHOTOGRAHY",
+                                                          category: "BRONZE",
+                                                          type: "PORTRAIT",
                                                        });
                                                   }}
                                              >

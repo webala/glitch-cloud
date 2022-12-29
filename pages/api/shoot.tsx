@@ -7,7 +7,7 @@ export default async function handler(req, res) {
           try {
 
                const response = await fetch(
-                    "http://localhost:8000/book/shoot",
+                    "http://localhost:8000/shoot/book",
                     {
                          method: "POST",
                          headers: {

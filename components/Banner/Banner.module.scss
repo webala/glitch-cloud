@@ -1,10 +1,10 @@
 .banner {
     position: relative;
     background: var(--backgroundSecondary);
-    padding: 50px 5%;
+    padding: 100px 5%;
 
     .banner_image {
-        filter: brightness(40%) drop-shadow(20px 20px 50px orangered);
+        filter: brightness(40%) drop-shadow(5px 5px 40px orangered);
         width: 100%;
         height: auto;
     }

@@ -1,0 +1,136 @@
+/** @format */
+
+.cart {
+     padding: 20px;
+     height: 100%;
+
+     .no_packages {
+          position: relative;
+          top: 40%;
+          color: red;
+          font-size: 24px;
+
+          @media (min-width: 768px) {
+               font-size: 36px
+          }
+     }
+
+     @media (min-width: 768px) {
+          padding: 30px 100px;
+     }
+
+     @media (min-width: 1028px) {
+          width: 80%;
+     }
+
+     .packages {
+          margin: 20px 0;
+
+          h1 {
+               color: orangered;
+               text-decoration: underline;
+               margin: 10px 0;
+               text-underline-offset: 5px;
+               font-size: 19px;
+          }
+
+          .package {
+               display: flex;
+               justify-content: space-between;
+               margin: 5px 0;
+               border-bottom: 1px solid orangered;
+               padding: 10px 0;
+
+               .delete_btn {
+                    color: red;
+                    font-size: 24px;
+                    transition: transform 0.2s ease-in;
+               }
+
+               .delete_btn:hover {
+                    transform: scale(1.2);
+               }
+          }
+
+          @media (min-width: 768px) {
+               h1 {
+                    font-size: 24px;
+               }
+          }
+
+          @media (min-width: 1028px) {
+               h1 {
+                    font-size: 28px;
+               }
+          }
+     }
+
+     .add_package {
+          background: orangered;
+          border-radius: 5px;
+          padding: 10px;
+     }
+
+
+     .shoot_details {
+          margin-top: 70px;
+
+          h2 {
+               color: orangered;
+               margin-bottom: 20px;
+
+               @media (min-width: 768px) {
+                    font-size: 19px;
+               }
+          }
+
+          form {
+               .field {
+                    margin: 10px 0;
+                    display: flex;
+                    flex-direction: column;
+
+                    input {
+                         height: 40px;
+                         border-radius: 5px;
+                         background: var(--backgroundPrimary);
+                         border: 1px solid orangered;
+                         padding: 10px 5px;
+                         color: white;
+
+                         @media (min-width: 768px) {
+                              height: 45px;
+                         }
+                    }
+
+                    @media (min-width: 768px) {
+                         label {
+                              font-size: 17px;
+                              margin: 5px 0;
+                         }
+                    }
+
+                    input:focus {
+                         outline: none;
+                    }
+               }
+          }
+
+          .submit {
+               display: flex;
+               justify-content: center;
+               margin-top: 50px;
+
+               @media (min-width: 1028px) {
+                    justify-content: flex-start;
+               }
+
+               button {
+                    width: 70%;
+                    background: orangered;
+                    border-radius: 5px;
+                    padding: 10px 0;
+               }
+          }
+     }
+}

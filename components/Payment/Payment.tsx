@@ -96,7 +96,7 @@ function Payment({setLoading}: iPayment) {
       };
 
       fetchBookedShoot();
-   }, [bookedShoot]);
+   }, [bookedShoot, setLoading]);
    return (
       <div className={style.payment}>
          <h1 className={style.heading}>Payment</h1>

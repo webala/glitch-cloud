@@ -1,27 +1,5 @@
 /** @format */
 
-<<<<<<< HEAD
-import React from "react";
-import Portrait from "./components/Portrait";
-import Ruracio from "./components/Ruracio";
-import Weddings from "./components/Weddings";
-import style from "./Services.module.scss";
-
-function Services() {
-  return (
-    <div className={style.services} id="services">
-      <h1 className={style.services_heading}>Services</h1>
-      <Weddings />
-
-      <div className={style.micro_service}>
-        <Ruracio />
-        <Portrait />
-      </div>
-    </div>
-  );
-}
-
-=======
 import React, { useState } from "react";
 import Portrait from "./components/Portrait";
 import Ruracio from "./components/Ruracio";
@@ -119,5 +97,4 @@ const Services: React.FC = () => {
    );
 };
 
->>>>>>> development
 export default Services;

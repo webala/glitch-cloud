@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 const shootSlice = createSlice({
    name: 'shoot',
    initialState: {

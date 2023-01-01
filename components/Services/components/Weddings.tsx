@@ -126,7 +126,7 @@ const Weddings = ({ selectPackage, btnRef, onOpen }) => {
                                  </li>
                                  <li>
                                     Unlimited photos of action throughout the
-                                    day's event
+                                    day&apos;s event
                                  </li>
                                  <li>
                                     Organized online gallery, Google drive link

@@ -11,15 +11,16 @@ function About() {
             <h1 className={style.heading}>About</h1>
          </AnimationOnScroll>
 
-         <AnimationOnScroll animateIn="animate__flipInX">
-            <div className={style.about_text_container}>
+         <div className={style.about_text_container}>
+            <AnimationOnScroll animateIn="animate__fadeInRight">
                <Image
                   className={style.about_image}
                   width={200}
                   src={mosh}
                   alt="mosh"
                />
-
+            </AnimationOnScroll>
+            <AnimationOnScroll animateIn="animate__fadeInLeftBig" delay={500}>
                <p>
                   Meet Brendan, the CEO and founder of Glitch Cloud Photography.
                </p>
@@ -32,16 +33,16 @@ function About() {
                <p>
                   I believe everyone should have the oportunity to feel
                   beautiful in a photograph so i&apos;ll guide you through your
-                  photography sessions and ease all your &quot;i&apos;m awkward&quot;
-                  fears.
+                  photography sessions and ease all your &quot;i&apos;m
+                  awkward&quot; fears.
                </p>
                <p>
                   Wheather you are comfortable or shy in from of a camera, my
                   sessions are relaxed with a no pressure atmosphere that brings
                   out the best in you.
                </p>
-            </div>
-         </AnimationOnScroll>
+            </AnimationOnScroll>
+         </div>
       </div>
    );
 }

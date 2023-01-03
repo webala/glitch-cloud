@@ -1,63 +1,62 @@
+/** @format */
+
 .about {
-    background: var(--backgroundSecondary);
-    padding: 200px 10%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+   background: var(--backgroundSecondary);
+   padding: 200px 10%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
 
-    .about_text_container {
-        box-shadow: 3px 0 16px orangered;
-        border-radius: 5px;
-        padding: 10px;
-    }
+   .about_text_container {
+      padding: 10px;
+      min-height: fit-content;
+   }
 
-    .heading {
-        color: orangered;
-        margin-bottom: 20px;
-    }
+   .heading {
+      color: orangered;
+      margin-bottom: 20px;
+   }
 
-    .about_image {
-        height: auto;
-        float: right;
-        margin: 0 0 10px 10px;
-        border-top-right-radius: 5px;
-    }
+   .about_image {
+      float: right;
+      margin: 0 0 10px 10px;
+      border-top-right-radius: 5px;
+   }
 
-    p {
-        font-size: 12px;
-        margin: 12px 0;
-        line-height: 2em;
-    }
+   p {
+      font-size: 12px;
+      margin: 0 12px 12px 12px;
+      line-height: 2em;
+   }
 
-    @media (min-width: 700px) {
-        // padding: 100px 20%;
+   @media (min-width: 700px) {
+      // padding: 100px 20%;
 
+      .heading {
+         margin-bottom: 50px;
+         font-size: 36px;
 
-        .heading {
-            margin-bottom: 50px;
-            font-size: 36px;
+         @media (min-width: 1028px) {
+            font-size: 45px;
+            margin-bottom: 100px;
+         }
+      }
+      .about_text_container {
+         padding: 20px;
+      }
+      .about_image {
+         margin: 0 0 20px 20px;
 
-            @media (min-width: 1028px) {
-                font-size: 45px;
-                margin-bottom: 100px;
-            }
-        }
-        .about_text_container {
-            padding: 20px;
-        }
-        .about_image {
-            margin: 0 0 20px 20px;
+         @media (min-width: 1028px) {
+            margin: 0 0 20px 40px;
+            width: 20%;
+         }
+      }
 
-            @media (min-width: 1028px) {
-                margin: 0 0 20px 40px;
-            }
-        }
-
-        p{
-            text-align: justify;
-            font-size: 14px;
-        }
-    }
-
-    
+      p {
+         text-align: justify;
+         font-size: 19px;
+         margin: 0 16px 16px 16px;
+      }
+   }
 }

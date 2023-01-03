@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Dispatch, SetStateAction } from "react";
 import { useSelector } from "react-redux";
 import { iShoot } from "../Cart/Cart";
 import { iSelectedPackage } from "../Services/Services";
@@ -9,11 +9,11 @@ import { useToast, Progress } from "@chakra-ui/react";
 
 
 interface iPayment {
-   setLoading: Function
+   setLoading: Dispatch<SetStateAction<boolean>>
 }
 
 function Payment({setLoading}: iPayment) {
-   const bookedShoot = useSelector((state) => state.shoot.bookedShoot);
+   const bookedShoot = useSelector((state: any) => state.shoot.bookedShoot);
 
    const [shoot, setShoot] = useState<iShoot>();
    const [phoneNumber, setPhoneNumber] = useState<string>()

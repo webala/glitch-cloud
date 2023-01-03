@@ -9,15 +9,20 @@ import {useDispatch} from 'react-redux'
 import {shootActions} from '../../store/shoot-slice'
 
 interface iCartProps {
-   selectedPackages: iSelectedPackages;
+   selectedPackages: iSelectedPackage[];
    onClose: Function;
    setSelectedPackages: Function;
 }
 
+interface shoot {
+   date: any;
+   location: any;
+}
+
 export interface iShoot {
    client: object;
-   shoot: object;
-   packages: iSelectedPackages;
+   shoot: shoot;
+   packages: iSelectedPackage[];
    id?: number;
 }
 
@@ -32,8 +37,8 @@ const Cart = ({
    const [last_name, setLastName] = useState<string>();
    const [email, setEmail] = useState<string>();
    const [phone_number, setPhoneNumber] = useState<string>();
-   const [location, setLocation] = useState<string>();
-   const [date, setDate] = useState<Date>();
+   const [location, setLocation] = useState<string|undefined>();
+   const [date, setDate] = useState<Date | string>();
 
    const dispatch = useDispatch()
 
@@ -100,7 +105,7 @@ const Cart = ({
                      <button
                         className={style.delete_btn}
                         onClick={() => {
-                           setSelectedPackages((items: iSelectedPackages) => {
+                           setSelectedPackages((items: iSelectedPackage[]) => {
                               let newState = [...items];
                               newState.splice(index, 1);
                               return newState;

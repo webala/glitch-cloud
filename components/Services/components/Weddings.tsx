@@ -4,8 +4,11 @@ import React from "react";
 import style from "../Services.module.scss";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import { BsFillBookmarkPlusFill } from "react-icons/bs";
+import { iPackageProps, iSelectedPackage } from "../Services";
 
-const Weddings = ({ selectPackage, btnRef, onOpen }) => {
+
+
+const Weddings = ({ selectPackage, btnRef, onOpen }: iPackageProps) => {
    return (
       <div className={style.weddings}>
          <div className={style.heading}>

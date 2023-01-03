@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, { useState, Dispatch, SetStateAction } from "react";
 import Portrait from "./components/Portrait";
 import Ruracio from "./components/Ruracio";
 import Weddings from "./components/Weddings";
@@ -26,12 +26,19 @@ export interface iSelectedPackages {
    selectedPackages: iSelectedPackage[];
 }
 
+export interface iPackageProps {
+   selectPackage: Function;
+   btnRef: React.Ref<HTMLButtonElement>;
+   onOpen: Function;
+}
+
 const Services: React.FC = () => {
    const [selectedPackages, setSelectedPackages] = useState<iSelectedPackage[]>(
       []
    );
    const { isOpen, onOpen, onClose } = useDisclosure();
-   const btnRef = React.useRef();
+
+   const btnRef = React.useRef<HTMLButtonElement>(null);
 
    const selectPackage = (pkg: iSelectedPackage) => {
       const existingPkg = selectedPackages.find((item) => {
@@ -52,7 +59,7 @@ const Services: React.FC = () => {
          return;
       }
 
-      setSelectedPackages((items: iSelectedPackages) => [...items, pkg]);
+      setSelectedPackages((items: iSelectedPackage[]) => [...items, pkg]);
    };
 
    return (

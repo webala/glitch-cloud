@@ -15,6 +15,10 @@ import {
    DrawerContent,
    DrawerCloseButton,
 } from "@chakra-ui/react";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { Service } from "../../types";
+import { AnimationOnScroll } from "react-animation-on-scroll";
 
 export interface iSelectedPackage {
    nature: string;
@@ -32,74 +36,41 @@ export interface iPackageProps {
    onOpen: Function;
 }
 
+export const fetchServices = async () => {
+   const response = await axios.get("http://localhost:8000/api/services");
+   return response.data;
+};
+
 const Services: React.FC = () => {
-   const [selectedPackages, setSelectedPackages] = useState<iSelectedPackage[]>(
-      []
-   );
-   const { isOpen, onOpen, onClose } = useDisclosure();
+   const {
+      data: services,
+      isLoading,
+      isError,
+      error,
+   } = useQuery(["services"], fetchServices);
 
-   const btnRef = React.useRef<HTMLButtonElement>(null);
-
-   const selectPackage = (pkg: iSelectedPackage) => {
-      const existingPkg = selectedPackages.find((item) => {
-         if (
-            (item.category &&
-               item.category == pkg.category &&
-               item.nature == pkg.nature &&
-               item.type == pkg.type) ||
-            (!item.category &&
-               item.nature == pkg.nature &&
-               item.type == pkg.type)
-         ) {
-            return item;
-         }
-      });
-
-      if (existingPkg) {
-         return;
-      }
-
-      setSelectedPackages((items: iSelectedPackage[]) => [...items, pkg]);
-   };
-
+   if (isLoading) return <div>Loading ...</div>;
+   if (isError) return <div>Error ...</div>;
+   console.log('services: ', services)
    return (
       <div className={style.services} id="services">
-         <h1 className={style.services_heading}>Services</h1>
-         <Weddings
-            selectPackage={selectPackage}
-            btnRef={btnRef}
-            onOpen={onOpen}
-         />
-         <Ruracio
-            selectPackage={selectPackage}
-            btnRef={btnRef}
-            onOpen={onOpen}
-         />
-         <Portrait
-            selectPackage={selectPackage}
-            btnRef={btnRef}
-            onOpen={onOpen}
-         />
+         <div className={style.services_heading}>
+            <h1 className={style.services_heading}>Services</h1>
+         </div>
 
-         <Drawer
-            isOpen={isOpen}
-            placement="right"
-            onClose={onClose}
-            finalFocusRef={btnRef}
-            size="xl"
-         >
-            <DrawerOverlay />
-            <DrawerContent bg="slate">
-               <DrawerCloseButton />
-               <DrawerBody>
-                  <Cart
-                     setSelectedPackages={setSelectedPackages}
-                     onClose={onClose}
-                     selectedPackages={selectedPackages}
-                  />
-               </DrawerBody>
-            </DrawerContent>
-         </Drawer>
+         <div className={style.list}>
+            {services.map((service: Service, index: number) => (
+               <AnimationOnScroll
+                  animateIn="animate__fadeInBottomLeft"
+                  key={index}
+               >
+                  <div className={style.service}>
+                     <h2>{service.name}</h2>
+                     <p>{service.description}</p>
+                  </div>
+               </AnimationOnScroll>
+            ))}
+         </div>
       </div>
    );
 };

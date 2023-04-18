@@ -4,7 +4,7 @@
    background: var(--backgroundPrimary);
    display: flex;
    flex-direction: column;
-   align-items: flex-start;
+   align-items: center;
    padding: 50px 10%;
 
    .services_heading {
@@ -20,191 +20,26 @@
       }
    }
 
-   .weddings {
-      width: 100%;
-      margin: 20px 0;
+   .list {
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
 
       @media (min-width: 768px) {
-         margin: 40px 0;
+         grid-template-columns: 1fr 1fr 1fr;
       }
-
-      .heading {
-         color: orangered;
-         margin: 10px 0;
-
-         @media (min-width: 768px) {
-            margin: 30px 0;
-            font-size: 24px;
-         }
-      }
-
-      .categories {
-         h2 {
-            font-weight: 700;
-         }
-
-         .category {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-
-            .item {
-               background: var(--backgroundSecondary);
-               margin: 20px 0;
-               padding: 5px 30px;
-               border-radius: 5px;
-
-               .price {
-                  color: orangered;
-                  margin: 20px 0;
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-
-                  button {
-                     display: flex;
-                     gap: 10px;
-                     align-items: center;
-                  }
-               }
-
-               h2 {
-                  font-weight: 600;
-                  font-size: 20px;
-                  margin: 30px 0;
-               }
-
-               @media (min-width: 1028px) {
-                  margin: 0 20px;
-               }
-            }
-
-            @media (min-width: 1028px) {
-               flex-direction: row;
-               align-items: flex-start;
-            }
-         }
-
-         .tab_list {
-            display: flex;
-            justify-content: center;
-            color: orangered;
-         }
-      }
-   }
-
-   .ruracio {
-      margin: 20px 0;
-
-      @media (min-width: 768px) {
-         margin: 40px 0;
-      }
-
-      .heading {
-         color: orangered;
-         margin: 10px 0;
-         @media (min-width: 768px) {
-            font-size: 24px;
-            margin: 30px 0;
-         }
-      }
-
-      .items {
-         .item {
-            background: var(--backgroundSecondary);
-            margin: 20px 0;
-            padding: 5px 30px;
-            border-radius: 5px;
-
-            h2 {
-               font-weight: 600;
-               font-size: 20px;
-               margin: 30px 0;
-            }
-
-           
-
-            .package {
-               ul {
-                  position: relative;
-                  left: 10px;
-               }
-            }
-
-            .price {
-               color: orangered;
-               margin: 20px 0;
-               display: flex;
-               justify-content: space-between;
-               align-items: center;
-
-               button {
-                  display: flex;
-                  gap: 10px;
-                  align-items: center;
-               }
-            }
-         }
-
-         @media (min-width: 768px) {
-            display: flex;
-            gap: 20px;
-         }
-      }
-   }
-
-   .portraits {
-      margin: 20px 0;
-
-      @media (min-width: 768px) {
-         margin: 40px 0;
-      }
-      .heading {
-         color: orangered;
-         margin: 10px 0;
-
-         @media (min-width: 768px) {
-            margin: 30px 0;
-            font-size: 24px;
-         }
-      }
-
-      .item {
-         background: var(--backgroundSecondary);
-         margin: 20px 0;
-         padding: 5px 30px;
-         border-radius: 5px;
+      .service {
+         border: 1px solid var(--backgroundSecondary);
+         padding: 5px;
+         box-shadow: 2px 2px 8px orangered;
 
          h2 {
-            font-weight: 600;
-            font-size: 20px;
-            margin: 30px 0;
-         }
-
-         .price {
             color: orangered;
-            margin: 20px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            button {
-               display: flex;
-               gap: 10px;
-               align-items: center;
-            }
-         }
-
-         @media (min-width: 1028px) {
             margin-bottom: 10px;
          }
       }
 
-      .tab_list {
-         display: flex;
-         justify-content: center;
-         color: orangered;
-      }
    }
 
    @media (min-width: 700px) {

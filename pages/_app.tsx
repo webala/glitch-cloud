@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import "animate.css/animate.min.css";
 import type { AppProps } from 'next/app'
 import{ChakraProvider, extendTheme} from '@chakra-ui/react'
-import '../styles/globals.css'
+import '../styles/globals.scss'
 import { Provider } from 'react-redux';
 import store from '../store';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';

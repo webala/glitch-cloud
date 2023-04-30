@@ -1,0 +1,75 @@
+/** @format */
+
+@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Monoton&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+html,
+body {
+   padding: 0;
+   margin: 0;
+   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+   --backgroundPrimary: #171826;
+   --backgroundSecondary: #0c0d14;
+   --titleFont: "Monoton", cursive;
+   --fontPrimary: "Space Mono", monospace;
+   --fontSecondary: "Major Mono Display", monospace;
+
+   color: white !important;
+}
+
+a {
+   color: inherit;
+   text-decoration: none;
+}
+
+* {
+   box-sizing: border-box;
+   padding: 0;
+   margin: 0;
+   font-family: var(--fontPrimary);
+}
+
+h1 {
+   font-family: var(--fontSecondary);
+   color: orangered;
+}
+
+form {
+   .heading {
+      font-weight: 700;
+      margin-bottom: 20px;
+      
+
+      @media (min-width: 768px) {
+         font-size: 21px;
+         margin-bottom: 30px;
+      }
+   }
+   .field {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+      width: 100%;
+
+      @media (min-width: 768px) {
+         width: 400px;
+      }
+
+      label {
+         font-weight: 300;
+         margin-bottom: 5px;
+         color: orangered;
+      }
+
+      input {
+         width: 100%;
+         padding: 10px 5px;
+         border-radius: 8px;
+         color: black;
+      }
+
+      input:focus {
+         outline: none;
+      }
+   }
+}

@@ -12,3 +12,13 @@ export type Service = {
    description: string;
    price: number;
 };
+
+export type BookedService = {
+   service: Service;
+   quantity: number;
+}
+
+export type Category = {
+   id: number;
+   name: string;
+}

@@ -4,7 +4,7 @@ import Upload from '../components/UploadImage/Upload'
 
 function Dashboard() {
   return (
-    <div>
+    <div className='dashboard'>
       <Upload />
       <CreateService />
     </div>

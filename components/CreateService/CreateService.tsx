@@ -1,15 +1,20 @@
 /** @format */
 
 import { useToast } from "@chakra-ui/react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useState } from "react";
+import { Category } from "../../types";
+import { fetchCategories } from "../../utils";
 import style from "./CreateService.module.scss";
 
 function CreateService() {
    const [name, setName] = useState<string>();
    const [description, setDescription] = useState<string>();
    const [price, setPrice] = useState<number>();
+   const [quantifiable, setQuantifiable] = useState<boolean>();
+   const [serviceCategories, setServiceCategories] = useState<Category[]>()
+
    const queryClient = useQueryClient();
    const toast = useToast();
 
@@ -19,6 +24,7 @@ function CreateService() {
             name,
             description,
             price,
+            quantifiable
          };
          const response = await axios.post(
             "http://localhost:8000/api/services",
@@ -59,9 +65,17 @@ function CreateService() {
       e.preventDefault();
       addServiceMutation.mutate();
    };
+
+  const {
+     data: categories,
+     isLoading: categoriesIsLoading,
+     isError: categoriesIsError,
+     error: categoriesError,
+  } = useQuery(["categories"], fetchCategories);
+
    return (
       <form className={style.create_service} onSubmit={handleSubmit}>
-         <div className={style.field}>
+         <div className="field">
             <label htmlFor="">Name</label>
             <input
                onChange={(e) => setName(e.target.value)}
@@ -70,7 +84,7 @@ function CreateService() {
             />
          </div>
 
-         <div className={style.field}>
+         <div className="field">
             <label htmlFor="">Description</label>
             <input
                onChange={(e) => setDescription(e.target.value)}
@@ -78,18 +92,48 @@ function CreateService() {
                placeholder="Service description"
             />
          </div>
-
-         <div className={style.field}>
+         <div className="field">
             <label htmlFor="">Price</label>
             <input
                onChange={(e) => setPrice(parseInt(e.target.value))}
                type="number"
-               placeholder="Service price"
+               placeholder="Price"
             />
          </div>
 
+         <div className="field checkbox">
+            <label htmlFor="">Quantifiable</label>
+            <input
+               onChange={(e) => {
+                  e.preventDefault();
+                  setQuantifiable(() =>
+                     e.currentTarget.checked ? true : false
+                  );
+               }}
+               type="checkbox"
+            />
+         </div>
+
+         {categories.map((category: Category, index: number) => (
+            <div className="field checkbox" key={index}>
+               <label htmlFor="">{category.name}</label>
+               <input
+                  onChange={(e) => {
+                     e.preventDefault();
+                     setQuantifiable(() =>
+                        e.currentTarget.checked ? true : false
+                     );
+                  }}
+                  type="checkbox"
+                  value={JSON.stringify(category)}
+               />
+            </div>
+         ))}
+
          <div className="actions">
-            <button>Create service</button>
+            <button type="submit" className="submit">
+               Create service
+            </button>
          </div>
       </form>
    );

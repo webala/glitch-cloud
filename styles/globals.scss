@@ -61,15 +61,46 @@ form {
          color: orangered;
       }
 
-      input {
+      input, textarea {
          width: 100%;
          padding: 10px 5px;
          border-radius: 8px;
          color: black;
       }
 
+      textarea {
+        height: 100px;
+      }
+
       input:focus {
          outline: none;
       }
    }
+
+   .checkbox {
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+
+    input {
+      width: 20px;
+    }
+   }
+
+   .actions {
+    button {
+      padding: 5px;
+      border-radius: 8px;
+    }
+
+    .submit {
+      background: orangered;
+      color: var(--backgroundPrimary);
+    }
+   }
+}
+
+.dashboard {
+  background: var(--backgroundPrimary);
+  min-height: 100vh;
 }

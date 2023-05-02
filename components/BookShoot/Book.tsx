@@ -5,7 +5,7 @@ import { useState } from "react";
 import { fetchCategories } from "../../utils";
 import { fetchServices } from "../Services/Services";
 import style from "./Book.module.scss";
-import { Service } from "../../types";
+import { BookedService, Service } from "../../types";
 import moment from "moment";
 import axios from "axios";
 
@@ -14,7 +14,7 @@ function Book() {
    const [date, setDate] = useState<string>();
    const [time, setTime] = useState<string>();
    const [description, setDescription] = useState<string>();
-   const [bookedServices, setBookedServices] = useState<Service[]>([]);
+   const [bookedServices, setBookedServices] = useState<BookedService[]>([]);
 
    const bookMutation = useMutation(
       async () => {
@@ -23,7 +23,7 @@ function Book() {
             date,
             time,
             description,
-            services: bookedServices,
+            booked_services: bookedServices,
          };
 
          const response = await axios.post(
@@ -69,7 +69,6 @@ function Book() {
       e.preventDefault();
       bookMutation.mutate();
    };
-   console.log("categories: ", services);
    return (
       <div className={style.book}>
          <div className={style.title}>
@@ -114,10 +113,8 @@ function Book() {
                         In your own words, describe what you want for the
                         photoshoot session
                      </p>
-                     <input
-                        type="text"
+                     <textarea
                         onChange={(e) => setDescription(e.target.value)}
-                        placeholder="10:00"
                         required
                      />
                   </div>
@@ -128,11 +125,14 @@ function Book() {
                         Customize your shoot. Which of our services will you
                         need?
                      </h2>
-                     <p className={style.helper}>Click on a service to select</p>
+                     <p className={style.helper}>
+                        Click on a service to select
+                     </p>
                      <div className={style.list}>
                         {services.map((service: Service, index: number) => {
                            const selected = bookedServices.find(
-                              (ser: Service) => service.id === ser.id
+                              (ser: BookedService) =>
+                                 service.id === ser.service.id
                            );
                            return (
                               <div
@@ -147,14 +147,15 @@ function Book() {
                                        setBookedServices(
                                           bookedServices.filter(
                                              (selected) =>
-                                                selected.id !== service.id
+                                                selected.service.id !==
+                                                service.id
                                           )
                                        );
                                     } else {
                                        setBookedServices(
-                                          (selected: Service[]) => [
+                                          (selected: BookedService[]) => [
                                              ...selected,
-                                             service,
+                                             { service, quantity: 1 },
                                           ]
                                        );
                                     }

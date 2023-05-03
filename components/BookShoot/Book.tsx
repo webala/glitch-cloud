@@ -8,6 +8,7 @@ import style from "./Book.module.scss";
 import { BookedService, Category, Service } from "../../types";
 import moment from "moment";
 import axios from "axios";
+import Link from "next/link";
 
 function Book() {
    const [location, setLocation] = useState<string>();
@@ -62,7 +63,7 @@ function Book() {
    if (servicesIsLoading) return <div>Loading ...</div>;
    if (servicesIsError) return <div>Error ...</div>;
 
-   console.log("services:", services);
+   console.log("booked services:", bookedServices);
    const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const newDate = moment(new Date(e.target.value)).format("YYYY-MM-DD");
       setDate(newDate);
@@ -71,6 +72,11 @@ function Book() {
       e.preventDefault();
       bookMutation.mutate();
    };
+
+   const quantifiableServices = bookedServices.filter(
+      (service: BookedService) => service.service.quantifiable
+   );
+
    return (
       <div className={style.book}>
          <div className={style.title}>
@@ -120,6 +126,49 @@ function Book() {
                         required
                      />
                   </div>
+                  {quantifiableServices.length > 0 ? (
+                     <>
+                        <h2 className="heading">
+                           Set a quantity for the following
+                        </h2>
+                        {quantifiableServices.map(
+                           (service: BookedService, index: number) => (
+                              <div key={index} className="field">
+                                 <label htmlFor="">
+                                    {service.service.name}
+                                 </label>
+                                 <input
+                                    type="number"
+                                    onChange={(e) => {
+                                       setBookedServices((services) => {
+                                          const newServices = services.map(
+                                             (ser) => {
+                                                if (ser.service.id === service.service.id) {
+                                                   ser.quantity = parseInt(
+                                                      e.target.value
+                                                   );
+                                                }
+                                                return ser;
+                                             }
+                                          );
+                                          return newServices;
+                                       });
+                                    }}
+                                    placeholder="10:00"
+                                    required
+                                    value={service.quantity}
+                                 />
+                              </div>
+                           )
+                        )}
+                     </>
+                  ) : null}
+
+                  <div className="actions">
+                     <button className="submit" type="submit">
+                        Proceed
+                     </button>
+                  </div>
                </div>
                <div className={style.right}>
                   <div className={style.services}>
@@ -130,6 +179,23 @@ function Book() {
                      <p className={style.helper}>
                         Click on a service to select
                      </p>
+                     <div className={style.links}>
+                        <p>Find a category</p>
+
+                        {isCategoriesSuccess ? (
+                           <ul>
+                              {categories.map(
+                                 (category: Category, index: number) => (
+                                    <li key={index}>
+                                       <Link href={`#${category.id}`}>
+                                          {category.name}
+                                       </Link>
+                                    </li>
+                                 )
+                              )}
+                           </ul>
+                        ) : null}
+                     </div>
 
                      {isCategoriesSuccess ? (
                         <>
@@ -150,7 +216,12 @@ function Book() {
 
                                  return (
                                     <>
-                                    <h2>{category.name}</h2>
+                                       <h2
+                                          className={style.category_heading}
+                                          id={`${category.id}`}
+                                       >
+                                          {category.name}
+                                       </h2>
                                        <div className={style.list} key={index}>
                                           {servicesInCategory.map(
                                              (
@@ -272,11 +343,6 @@ function Book() {
                      </div>
                   </div>
                </div>
-            </div>
-            <div className="actions">
-               <button className="submit" type="submit">
-                  Proceed
-               </button>
             </div>
          </form>
       </div>

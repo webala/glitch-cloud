@@ -15,6 +15,7 @@ export type Service = {
    description: string;
    price: number;
    category: Category[]
+   quantifiable: boolean;
 };
 
 export type BookedService = {

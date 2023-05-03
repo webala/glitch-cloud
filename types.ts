@@ -5,12 +5,16 @@ export type GalleryImage = {
    download_url: string;
    display: boolean;
 };
-
+export type Category = {
+   id: number;
+   name: string;
+};
 export type Service = {
    id:number;
    name: string;
    description: string;
    price: number;
+   category: Category[]
 };
 
 export type BookedService = {
@@ -18,7 +22,3 @@ export type BookedService = {
    quantity: number;
 }
 
-export type Category = {
-   id: number;
-   name: string;
-}

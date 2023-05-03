@@ -5,7 +5,7 @@ import { useState } from "react";
 import { fetchCategories } from "../../utils";
 import { fetchServices } from "../Services/Services";
 import style from "./Book.module.scss";
-import { BookedService, Service } from "../../types";
+import { BookedService, Category, Service } from "../../types";
 import moment from "moment";
 import axios from "axios";
 
@@ -56,11 +56,13 @@ function Book() {
       isLoading: categoriesIsLoading,
       isError: categoriesIsError,
       error: categoriesError,
+      isSuccess: isCategoriesSuccess,
    } = useQuery(["categories"], fetchCategories);
 
    if (servicesIsLoading) return <div>Loading ...</div>;
    if (servicesIsError) return <div>Error ...</div>;
 
+   console.log("services:", services);
    const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const newDate = moment(new Date(e.target.value)).format("YYYY-MM-DD");
       setDate(newDate);
@@ -128,6 +130,102 @@ function Book() {
                      <p className={style.helper}>
                         Click on a service to select
                      </p>
+
+                     {isCategoriesSuccess ? (
+                        <>
+                           {categories.map(
+                              (category: Category, index: number) => {
+                                 const servicesInCategory = services.filter(
+                                    (service: Service) => {
+                                       const serviceCategories =
+                                          service.category;
+                                       const serviceIsPresent =
+                                          serviceCategories.find(
+                                             (cat: Category) =>
+                                                category.id === cat.id
+                                          );
+                                       if (serviceIsPresent) return service;
+                                    }
+                                 );
+
+                                 return (
+                                    <>
+                                    <h2>{category.name}</h2>
+                                       <div className={style.list} key={index}>
+                                          {servicesInCategory.map(
+                                             (
+                                                service: Service,
+                                                index: number
+                                             ) => {
+                                                const selected =
+                                                   bookedServices.find(
+                                                      (ser: BookedService) =>
+                                                         service.id ===
+                                                         ser.service.id
+                                                   );
+                                                return (
+                                                   <div
+                                                      className={
+                                                         selected
+                                                            ? `${style.service} ${style.selected}`
+                                                            : `${style.service}`
+                                                      }
+                                                      key={index}
+                                                      onClick={() => {
+                                                         if (selected) {
+                                                            setBookedServices(
+                                                               bookedServices.filter(
+                                                                  (selected) =>
+                                                                     selected
+                                                                        .service
+                                                                        .id !==
+                                                                     service.id
+                                                               )
+                                                            );
+                                                         } else {
+                                                            setBookedServices(
+                                                               (
+                                                                  selected: BookedService[]
+                                                               ) => [
+                                                                  ...selected,
+                                                                  {
+                                                                     service,
+                                                                     quantity: 1,
+                                                                  },
+                                                               ]
+                                                            );
+                                                         }
+                                                      }}
+                                                   >
+                                                      <div
+                                                         className={style.info}
+                                                      >
+                                                         <div>
+                                                            <h2>
+                                                               {service.name}
+                                                            </h2>
+                                                            <p>
+                                                               @{service.price}
+                                                            </p>
+                                                         </div>
+                                                         <p>
+                                                            {
+                                                               service.description
+                                                            }
+                                                         </p>
+                                                      </div>
+                                                   </div>
+                                                );
+                                             }
+                                          )}
+                                       </div>
+                                    </>
+                                 );
+                              }
+                           )}
+                        </>
+                     ) : null}
+
                      <div className={style.list}>
                         {services.map((service: Service, index: number) => {
                            const selected = bookedServices.find(

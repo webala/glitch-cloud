@@ -38,6 +38,7 @@ form {
    .heading {
       font-weight: 700;
       margin-bottom: 20px;
+      color: white;
       
 
       @media (min-width: 768px) {
@@ -82,6 +83,10 @@ form {
     align-items: center;
     gap: 30px;
 
+    label {
+      width: 150px;
+    }
+
     input {
       width: 20px;
     }
@@ -103,4 +108,8 @@ form {
 .dashboard {
   background: var(--backgroundPrimary);
   min-height: 100vh;
+}
+
+.selected {
+  border: 1px solid orangered;
 }

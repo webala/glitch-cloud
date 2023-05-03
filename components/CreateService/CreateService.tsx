@@ -13,7 +13,7 @@ function CreateService() {
    const [description, setDescription] = useState<string>();
    const [price, setPrice] = useState<number>();
    const [quantifiable, setQuantifiable] = useState<boolean>();
-   const [serviceCategories, setServiceCategories] = useState<Category[]>()
+   const [serviceCategories, setServiceCategories] = useState<Category[]>([]);
 
    const queryClient = useQueryClient();
    const toast = useToast();
@@ -24,7 +24,8 @@ function CreateService() {
             name,
             description,
             price,
-            quantifiable
+            quantifiable,
+            category: serviceCategories,
          };
          const response = await axios.post(
             "http://localhost:8000/api/services",
@@ -47,6 +48,9 @@ function CreateService() {
                isClosable: true,
             });
             queryClient.invalidateQueries(["services"]);
+            setName('');
+            setDescription('');
+            setPrice(0)
          },
          onError: () => {
             toast({
@@ -66,12 +70,15 @@ function CreateService() {
       addServiceMutation.mutate();
    };
 
-  const {
-     data: categories,
-     isLoading: categoriesIsLoading,
-     isError: categoriesIsError,
-     error: categoriesError,
-  } = useQuery(["categories"], fetchCategories);
+   console.log(serviceCategories);
+
+   const {
+      data: categories,
+      isLoading: categoriesIsLoading,
+      isError: categoriesIsError,
+      error: categoriesError,
+      isSuccess: isCategoriesSuccess,
+   } = useQuery(["categories"], fetchCategories);
 
    return (
       <form className={style.create_service} onSubmit={handleSubmit}>
@@ -81,6 +88,7 @@ function CreateService() {
                onChange={(e) => setName(e.target.value)}
                type="text"
                placeholder="Service name"
+               value={name}
             />
          </div>
 
@@ -90,6 +98,7 @@ function CreateService() {
                onChange={(e) => setDescription(e.target.value)}
                type="text"
                placeholder="Service description"
+               value={description}
             />
          </div>
          <div className="field">
@@ -98,37 +107,60 @@ function CreateService() {
                onChange={(e) => setPrice(parseInt(e.target.value))}
                type="number"
                placeholder="Price"
+               value={price}
             />
          </div>
-
          <div className="field checkbox">
             <label htmlFor="">Quantifiable</label>
             <input
                onChange={(e) => {
-                  e.preventDefault();
-                  setQuantifiable(() =>
-                     e.currentTarget.checked ? true : false
-                  );
+                  setQuantifiable(() => (e.target.checked ? true : false));
                }}
                type="checkbox"
             />
          </div>
 
-         {categories.map((category: Category, index: number) => (
-            <div className="field checkbox" key={index}>
-               <label htmlFor="">{category.name}</label>
-               <input
-                  onChange={(e) => {
-                     e.preventDefault();
-                     setQuantifiable(() =>
-                        e.currentTarget.checked ? true : false
-                     );
-                  }}
-                  type="checkbox"
-                  value={JSON.stringify(category)}
-               />
-            </div>
-         ))}
+         <div className="heading">
+            <h2>Which of the following categories requires this service?</h2>
+         </div>
+         {categoriesIsLoading ? <>Loading ...</> : null}
+
+         {isCategoriesSuccess ? (
+            <>
+               {categories.map((category: Category, index: number) => {
+                  const selected = serviceCategories?.find(
+                     (cat: Category) => cat.id === category.id
+                  );
+
+                  return (
+                     <div
+                        className={`field checkbox ${style.selected}`}
+                        key={index}
+                     >
+                        <label htmlFor="">{category.name}</label>
+                        <input
+                           onChange={() => {
+                              if (selected) {
+                                 setServiceCategories([
+                                    ...serviceCategories?.filter(
+                                       (cat: Category) => cat.id !== category.id
+                                    ),
+                                 ]);
+                              } else {
+                                 setServiceCategories([
+                                    ...serviceCategories,
+                                    category,
+                                 ]);
+                              }
+                           }}
+                           type="checkbox"
+                        />
+                     </div>
+                  );
+               })}
+            </>
+         ) : null}
+         {categoriesIsError ? <div>Error</div> : null}
 
          <div className="actions">
             <button type="submit" className="submit">

@@ -56,6 +56,19 @@ form {
          width: 400px;
       }
 
+      div {
+         display: flex;
+         gap: 5px;
+
+         input {
+            width: 47%;
+
+            @media (min-width: 768px) {
+               width: 197.5px;
+            }
+         }
+      }
+
       label {
          font-weight: 300;
          margin-bottom: 5px;
@@ -112,4 +125,9 @@ form {
 
 .selected {
   border: 1px solid orangered;
+}
+
+
+iframe {
+   background: var(--backgroundPrimary);
 }

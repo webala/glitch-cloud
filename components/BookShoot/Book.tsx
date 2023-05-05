@@ -1,6 +1,6 @@
 /** @format */
 
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { fetchCategories } from "../../utils";
 import { fetchServices } from "../Services/Services";
@@ -9,6 +9,9 @@ import { BookedService, Category, Service } from "../../types";
 import moment from "moment";
 import axios from "axios";
 import Link from "next/link";
+import { useToast } from "@chakra-ui/react";
+import { useRouter } from "next/router";
+
 
 function Book() {
    const [location, setLocation] = useState<string>();
@@ -16,6 +19,12 @@ function Book() {
    const [time, setTime] = useState<string>();
    const [description, setDescription] = useState<string>();
    const [bookedServices, setBookedServices] = useState<BookedService[]>([]);
+   const toast = useToast()
+   const router = useRouter()
+   const queryClient = useQueryClient()
+   
+   
+
 
    const bookMutation = useMutation(
       async () => {
@@ -40,8 +49,27 @@ function Book() {
          return response.data;
       },
       {
-         onSuccess: () => console.log("shoot booked"),
-         onError: () => console.log("an error occurred"),
+         onSuccess: (data) => {
+            
+            toast({
+               title: "Success!",
+               description: "redirecting to payment",
+               status: "success",
+               duration: 9000,
+               isClosable: true,
+            });
+            queryClient.invalidateQueries(['shoots'])
+            router.push(`/pay-shoot/${data.id}`)
+         },
+         onError: () => {
+            toast({
+               title: "Error!",
+               description: "Something went wrong. Please try again.",
+               status: "error",
+               duration: 9000,
+               isClosable: true,
+            });
+         },
       }
    );
 

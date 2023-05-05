@@ -6,138 +6,184 @@ import { iShoot } from "../Cart/Cart";
 import { iSelectedPackage } from "../Services/Services";
 import style from "./Payment.module.scss";
 import { useToast, Progress } from "@chakra-ui/react";
-
+import { useRouter } from "next/router";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import axios from "axios";
+import { getShootCost } from "../../utils";
+import { BookedService } from "../../types";
+import { duration } from "moment";
 
 interface iPayment {
-   setLoading: Dispatch<SetStateAction<boolean>>
+   setLoading: Dispatch<SetStateAction<boolean>>;
 }
 
-function Payment({setLoading}: iPayment) {
-   const bookedShoot = useSelector((state: any) => state.shoot.bookedShoot);
+function Payment({ setLoading }: iPayment) {
+   const [first_name, setFirstName] = useState<string>();
+   const [last_name, setLastName] = useState<string>();
+   const [email, setEmail] = useState<string>();
+   const [phone, setPhone] = useState<string>();
+   const [iframeUrl, setIframeUrl] = useState<string>();
+   const queryClient = useQueryClient();
 
-   const [shoot, setShoot] = useState<iShoot>();
-   const [phoneNumber, setPhoneNumber] = useState<string>()
-   const [requestId, setRequestId] = useState<string>();
-   const [error, setError] = useState<string>()
-   
-   console.log("shoot: ", shoot);
+   const toast = useToast();
+   const router = useRouter();
+   const { shootId } = router.query;
 
+   console.log("shoot id:", shootId);
 
-   //Chakra UI toast
-   const toast = useToast()
-
-   const fetchTransaction = async () => {
-      const response = await fetch(
-         `http://localhost:8000/transaction/${requestId}`
+   const fetchShoot = async () => {
+      const response = await axios.get(
+         `http://localhost:8000/api/shoot/${shootId}`
       );
-      const jsonRes = await response.json()
-      console.log('transaction: ', jsonRes);
-      
-   }
+      return response.data;
+   };
 
-   const handlePayment = async (e:React.SyntheticEvent) => {
-      setLoading(true);
-      e.preventDefault()
-      console.log("handlePaymen called");
-      console.log("Phone number: ", phoneNumber);
-      
-      const response = await fetch(
-         `http://localhost:8000/shoot/pay/${bookedShoot.id}`, {
-            method:'POST',
-            headers: {
-               "Content-Type": "application/json",
+   const paymentMutation = useMutation(
+      async () => {
+         const data = {
+            shoot: {
+               ...shoot,
+               client: {
+                  first_name,
+                  last_name,
+                  email,
+                  phone,
+               },
             },
-            body: JSON.stringify({
-               phoneNumber
-            })
-         }
-      );
+         };
+         console.log("data: ", data);
 
-      const jsonRes = await response.json();
-      setLoading(false);
-      if (response.status === 200 ) {
-         
-         let {requestId} = jsonRes
-         setRequestId(requestId)
-         console.log("requestId", requestId);
-         toast({
-            title: "Push notification sent.",
-            description: "Please check your phone.",
-            status: "success",
-            duration: 9000,
-            isClosable: true,
-            position: "top",
-         });
-         // fetchTransaction()
-      } else if (response.status === 400) {
-         setError(jsonRes.message)
-         toast({
-            title: "Error",
-            description: error,
-            status: "error",
-            duration: 9000,
-            isClosable: true,
-            position: "top",
-         });
-      } 
+         const response = await axios.post(
+            "http://localhost:8000/api/payment",
+            data,
+            {
+               headers: {
+                  "Content-Type": "application/json",
+               },
+            }
+         );
+
+         return response.data;
+      },
+      {
+         onSuccess: (data) => {
+            setLoading(false);
+            setIframeUrl(data.redirect_url);
+            queryClient.invalidateQueries(["transactions"]);
+         },
+         onError: () => {
+            setLoading(false);
+            toast({
+               title: "Error",
+               description:
+                  "Unable to initialize transaction. Please try again.",
+               duration: 3000,
+               status: "error",
+            });
+         },
+      }
+   );
+   const {
+      data: shoot,
+      isLoading: shootLoading,
+      isError: isShootError,
+      error: shootError,
+   } = useQuery(["shoot", shootId], fetchShoot);
+
+   if (shootLoading) {
+      return <div>Loading ...</div>;
    }
 
-   useEffect(() => {
-      const fetchBookedShoot = async () => {
-         setLoading(true)
-         const response = await fetch(
-            `http://localhost:8000/shoot/${bookedShoot.id}`
-         );
-         const jsonRes = await response.json();
-         console.log("booked shoot: ", jsonRes);
-         setShoot(jsonRes);
-         setPhoneNumber(jsonRes.client.phone)
-         setLoading(false);
-      };
+   if (isShootError) {
+      return <div>Error ...</div>;
+   }
 
-      fetchBookedShoot();
-   }, [bookedShoot, setLoading]);
+   const shootCost = getShootCost(shoot.booked_services);
+
+   const handlePayment = (e: React.SyntheticEvent) => {
+      e.preventDefault();
+      setLoading(true);
+      paymentMutation.mutate();
+   };
    return (
       <div className={style.payment}>
-         <h1 className={style.heading}>Payment</h1>
-         
-         <div className={style.shoot_summary}>
-            <p>
-               Book shoot for {shoot?.shoot.date} in {shoot?.shoot.location}
-            </p>
+         <h1 className={style.heading}>Shoot summary</h1>
 
-            <div className={style.packages}>
-               <h2>Packages</h2>
-               {shoot?.packages.map(
-                  (item: iSelectedPackage, index: number): any => (
-                     <div key={index} className={style.package}>
-                        <p>
-                           {item.type}-{item.nature} ({item.category})
-                        </p>
+         <div>
+            <p>{shoot.location}</p>
+            <p>{shoot.description}</p>
+            <p>Shoot total: ksh {shootCost}</p>
+
+            <div className="services">
+               {shoot.booked_services.map(
+                  (service: BookedService, index: number) => (
+                     <div className={style.service} key={index}>
+                        <h2>
+                           {service.service.name} x {service.quantity}
+                        </h2>
+                        <p>{service.service.description}</p>
+                        <p>@ ksh {service.service.price}</p>
                      </div>
                   )
                )}
             </div>
-
-            <div className={style.phone_form}>
-               <p>
-                  A deposit of ksh 1000 is required to process your order.
-                  Please confirm your M-Pesa number below.
-               </p>
-               <form onSubmit={handlePayment}>
-                  <div className={style.field}>
-                     <input
-                        type="text"
-                        value={phoneNumber}
-                        onChange={(e) => setPhoneNumber(e.target.value)}
-                     />
-                  </div>
-                  <div>
-                     <button type="submit">Proceed</button>
-                  </div>
-               </form>
-            </div>
          </div>
+
+         <h1 className={style.heading}>Payment</h1>
+
+         <form onSubmit={handlePayment} className={style.payment_form}>
+            <div className="heading">
+               <h2>Your details</h2>
+            </div>
+
+            <div className="field name">
+               <label htmlFor="name">Your Name</label>
+               <div>
+                  <input
+                     type="text"
+                     placeholder="First name"
+                     onChange={(e) => setFirstName(e.target.value)}
+                     required
+                  />
+                  <input
+                     type="text"
+                     placeholder="Last name"
+                     onChange={(e) => setLastName(e.target.value)}
+                     required
+                  />
+               </div>
+            </div>
+            <div className="field">
+               <label htmlFor="email">Email</label>
+               <input
+                  type="email"
+                  placeholder="Your email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+               />
+            </div>
+            <div className="field">
+               <label htmlFor="phone">Phone number</label>
+               <input
+                  type="text"
+                  placeholder="Your phone number"
+                  onChange={(e) => setPhone(e.target.value)}
+                  required
+               />
+            </div>
+            <div className="actions">
+               <button type="submit" className="submit">
+                  Initialize payment
+               </button>
+            </div>
+         </form>
+         {iframeUrl ? (
+            <iframe
+               src={iframeUrl}
+               width="100%"
+               height="600px"
+            ></iframe>
+         ) : null}
       </div>
    );
 }

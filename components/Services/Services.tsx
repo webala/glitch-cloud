@@ -1,10 +1,6 @@
 /** @format */
 
 import React, { useState, Dispatch, SetStateAction } from "react";
-import Portrait from "./components/Portrait";
-import Ruracio from "./components/Ruracio";
-import Weddings from "./components/Weddings";
-import Cart from "../Cart/Cart";
 import style from "./Services.module.scss";
 import {
    useDisclosure,
@@ -14,14 +10,16 @@ import {
    ModalHeader,
    ModalCloseButton,
    ModalBody,
+   useToast,
 } from "@chakra-ui/react";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { Service } from "../../types";
 import { AnimationOnScroll } from "react-animation-on-scroll";
 import Link from "next/link";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import EditForm from "../EditForm/EditForm";
+import DeleteWarning from "../DeleteWarning/DeleteWarning";
 
 export interface iSelectedPackage {
    nature: string;
@@ -47,28 +45,87 @@ export const fetchServices = async () => {
 const Services: React.FC = () => {
    const [mutationData, setMutationData] = useState({});
    const [editData, setEditData] = useState<Service>();
+   const [deleteServiceId, setDeleteServiceId] = useState<number>()
 
+   const toast = useToast();
+   const queryClient = useQueryClient();
    const {
       isOpen: editIsOpen,
       onOpen: editOnOpen,
       onClose: editOnClose,
    } = useDisclosure();
 
-   const editServiceMutation = useMutation(async () => {
-      const response = await axios.put(
-         `http://localhost:8000/api/service/${editData?.id}`,
-         mutationData,
-         {
-            headers: {
-               "Content-Type": "application/json",
-            },
-         }
-      );
-      return response.data
-   }, {
-      onSuccess: () => console.log('success'),
-      onError: () => console.log('error')
-   });
+   const {
+      isOpen: deleteIsOpen,
+      onOpen: deleteOnOpen,
+      onClose: deleteOnClose,
+   } = useDisclosure();
+
+   const editServiceMutation = useMutation(
+      async () => {
+         const response = await axios.patch(
+            `http://localhost:8000/api/service/${editData?.id}`,
+            mutationData,
+            {
+               headers: {
+                  "Content-Type": "application/json",
+               },
+            }
+         );
+         return response.data;
+      },
+      {
+         onSuccess: () => {
+            toast({
+               title: "Success!",
+               description: "Service edited",
+               status: "success",
+               duration: 9000,
+               isClosable: true,
+            });
+            queryClient.invalidateQueries(["services"]);
+         },
+         onError: () => {
+            toast({
+               title: "Error!",
+               description: "Please try again later",
+               status: "success",
+               duration: 9000,
+               isClosable: true,
+            });
+         },
+      }
+   );
+
+   const deleteServiceMutation = useMutation(
+      async () => {
+         const response = await axios.delete(
+            `http://localhost:8000/api/service/${deleteServiceId}`
+         );
+         return response.data;
+      },
+      {
+         onSuccess: () => {
+            toast({
+               title: "Success!",
+               description: "Service deleted",
+               status: "success",
+               duration: 9000,
+               isClosable: true,
+            });
+            queryClient.invalidateQueries(["services"]);
+         },
+         onError: () => {
+            toast({
+               title: "Error!",
+               description: "Please try again later",
+               status: "success",
+               duration: 9000,
+               isClosable: true,
+            });
+         },
+      }
+   );
    const {
       data: services,
       isLoading,
@@ -83,7 +140,10 @@ const Services: React.FC = () => {
       editServiceMutation.mutate();
    };
 
-   console.log("services: ", services);
+   const handleDelete = () => {
+      deleteServiceMutation.mutate();
+   };
+
    return (
       <div className={style.services} id="services">
          <div className={style.services_heading}>
@@ -100,7 +160,13 @@ const Services: React.FC = () => {
                      <div className={style.name}>
                         <h2>{service.name}</h2>
                         <div className={style.actions}>
-                           <button className={style.delete}>
+                           <button
+                              className={style.delete}
+                              onClick={() => {
+                                 setDeleteServiceId(service.id);
+                                 deleteOnOpen();
+                              }}
+                           >
                               <AiFillDelete />
                            </button>
                            <button
@@ -142,6 +208,24 @@ const Services: React.FC = () => {
                      editData={editData}
                      setMutationData={setMutationData}
                      onClose={editOnClose}
+                  />
+               </ModalBody>
+            </ModalContent>
+         </Modal>
+         <Modal
+            colorScheme={`blue`}
+            isOpen={deleteIsOpen}
+            onClose={deleteOnClose}
+         >
+            <ModalOverlay />
+            <ModalContent background={`blue.900`}>
+               <ModalHeader>Delete part # {deleteServiceId}</ModalHeader>
+               <ModalCloseButton />
+               <ModalBody>
+                  <DeleteWarning
+                     loading={deleteServiceMutation.isLoading}
+                     handleDelete={handleDelete}
+                     onClose={deleteOnClose}
                   />
                </ModalBody>
             </ModalContent>

@@ -10,8 +10,11 @@ import Navbar from "../components/Navbar/Navbar";
 import OurWork from "../components/OurWork/OurWork";
 import Services from "../components/Services/Services";
 import Testimonisls from "../components/Testimonials/Testimonisls";
+import { useSession } from "next-auth/react";
 
 export default function Home() {
+  const session = useSession()
+  console.log('session: ', session.data)
   return (
     <div>
       <Head>

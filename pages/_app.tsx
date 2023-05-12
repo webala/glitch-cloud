@@ -6,6 +6,7 @@ import '../styles/globals.scss'
 import { Provider } from 'react-redux';
 import store from '../store';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { SessionProvider } from 'next-auth/react';
 
 const theme = extendTheme({
      colors: {
@@ -16,15 +17,17 @@ const theme = extendTheme({
 
 const queryClient = new QueryClient()
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps: {session, ...pageProps} }: AppProps) {
   return (
-     <Provider store={store}>
-        <QueryClientProvider client={queryClient}>
-           <ChakraProvider theme={theme}>
-              {" "}
-              <Component {...pageProps} />{" "}
-           </ChakraProvider>
-        </QueryClientProvider>
-     </Provider>
+     <SessionProvider session={session}>
+        <Provider store={store}>
+           <QueryClientProvider client={queryClient}>
+              <ChakraProvider theme={theme}>
+                 {" "}
+                 <Component {...pageProps} />{" "}
+              </ChakraProvider>
+           </QueryClientProvider>
+        </Provider>
+     </SessionProvider>
   );
 }

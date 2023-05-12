@@ -49,22 +49,22 @@ export const authOptions:AuthOptions = {
       maxAge: 12 * 60 * 60,
    },
    callbacks: {
-      // jwt: async ({ token, user, account }:{token: any, user:User, account: any}) => {
-      //    if (user && account) {
-      //       console.log("user: ", user);
-      //       return {
-      //          ...token,
-      //          username: user.username,
-      //          userId: user.id,
-      //       };
-      //    }
-      //    return token;
-      // },
+      async jwt (params:{token: any, user:any, account: any}) {
+         if (params.user && params.account) {
+            console.log("user: ", params.user);
+            return {
+               ...params.token,
+               username: params.user.username,
+               userId: params.user.id,
+               email: params.user.email
+            };
+         }
+         return params.token;
+      },
       session: async ({ session, token, user }:{session: any, token: any,user: any}) => {
-         console.log('user: ', user)
          session.user.name = token.username;
          session.user.id = token.userId;
-
+         session.user.email = token.email
          return session;
       },
    },

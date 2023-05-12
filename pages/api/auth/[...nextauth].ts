@@ -51,7 +51,6 @@ export const authOptions:AuthOptions = {
    callbacks: {
       async jwt (params:{token: any, user:any, account: any}) {
          if (params.user && params.account) {
-            console.log("user: ", params.user);
             return {
                ...params.token,
                username: params.user.username,

@@ -1,6 +1,7 @@
 /** @format */
 
 export type GalleryImage = {
+   id: number;
    filename: string;
    download_url: string;
    display: boolean;
@@ -10,18 +11,18 @@ export type Category = {
    name: string;
 };
 export type Service = {
-   id:number;
+   id: number;
    name: string;
    description: string;
    price: number;
-   category: Category[]
+   category: Category[];
    quantifiable: boolean;
 };
 
 export type BookedService = {
    service: Service;
    quantity: number;
-}
+};
 
 export type User = {
    id: number;
@@ -29,5 +30,22 @@ export type User = {
    first_name: string;
    last_name: string;
    email: string;
-}
+};
 
+export type Client = {
+   first_name: string;
+   last_name: string;
+   phone: string;
+   email: string;
+};
+
+export type Shoot = {
+   date: string;
+   location: string;
+   description: string;
+   booked: boolean;
+   cost: number;
+   complete: boolean;
+   booked_services: BookedService[];
+   client?: Client;
+};

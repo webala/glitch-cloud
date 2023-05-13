@@ -20,6 +20,7 @@ import Link from "next/link";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import EditForm from "../EditForm/EditForm";
 import DeleteWarning from "../DeleteWarning/DeleteWarning";
+import { useSession } from "next-auth/react";
 
 export interface iSelectedPackage {
    nature: string;
@@ -45,10 +46,12 @@ export const fetchServices = async () => {
 const Services: React.FC = () => {
    const [mutationData, setMutationData] = useState({});
    const [editData, setEditData] = useState<Service>();
-   const [deleteServiceId, setDeleteServiceId] = useState<number>()
+   const [deleteServiceId, setDeleteServiceId] = useState<number>();
 
    const toast = useToast();
    const queryClient = useQueryClient();
+   const session = useSession();
+   const { status: authStatus } = session;
    const {
       isOpen: editIsOpen,
       onOpen: editOnOpen,
@@ -119,7 +122,7 @@ const Services: React.FC = () => {
             toast({
                title: "Error!",
                description: "Please try again later",
-               status: "success",
+               status: "error",
                duration: 9000,
                isClosable: true,
             });
@@ -159,26 +162,28 @@ const Services: React.FC = () => {
                   <div className={style.service}>
                      <div className={style.name}>
                         <h2>{service.name}</h2>
-                        <div className={style.actions}>
-                           <button
-                              className={style.delete}
-                              onClick={() => {
-                                 setDeleteServiceId(service.id);
-                                 deleteOnOpen();
-                              }}
-                           >
-                              <AiFillDelete />
-                           </button>
-                           <button
-                              className={style.edit}
-                              onClick={() => {
-                                 setEditData(service);
-                                 editOnOpen();
-                              }}
-                           >
-                              <AiFillEdit />
-                           </button>
-                        </div>
+                        {authStatus === "authenticated" ? (
+                           <div className={style.actions}>
+                              <button
+                                 className={style.delete}
+                                 onClick={() => {
+                                    setDeleteServiceId(service.id);
+                                    deleteOnOpen();
+                                 }}
+                              >
+                                 <AiFillDelete />
+                              </button>
+                              <button
+                                 className={style.edit}
+                                 onClick={() => {
+                                    setEditData(service);
+                                    editOnOpen();
+                                 }}
+                              >
+                                 <AiFillEdit />
+                              </button>
+                           </div>
+                        ) : null}
                      </div>
                      <p>{service.description}</p>
                   </div>

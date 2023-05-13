@@ -1,0 +1,88 @@
+/** @format */
+
+section {
+   .container {
+      padding: 20px;
+      .heading {
+         margin: 50px 0;
+      }
+
+      .shoots {
+         display: grid;
+         grid-template-columns: 1fr;
+         gap: 10px;
+
+         @media (min-width: 768px) {
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+         }
+
+         @media (min-width: 1028px) {
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+         }
+
+         .shoot {
+            border: 1px solid orangered;
+            padding: 10px;
+            border-radius: 8px;
+            .shoot_heading {
+               display: flex;
+               gap: 20px;
+               padding: 10px 0;
+
+               @media (min-width: 768px) {
+                  font-size: 19px;
+               }
+
+               h1 {
+                  font-family: var(--fontPrimary);
+               }
+            }
+
+            .booked_services, .client, .actions {
+               border-top: 1px solid orangered;
+               width: fit-content;
+            }
+
+            .booked_services {
+               width: 100%;
+
+               .booked_service {
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  width: 100%;
+                  gap: 20px;
+                  margin: 10px 0;
+
+                  .service_heading {
+                     h1 {
+                        font-weight: 700;
+                     }
+                  }
+
+                  .price {
+                     color: orangered;
+                  }
+               }
+            }
+
+            .client {
+               padding: 10px 0;
+
+               span {
+                  color: orangered;
+               }
+            }
+
+            .actions {
+               padding: 10px 0;
+               display: flex;
+               align-items: center;
+               gap: 20px;
+            }
+         }
+      }
+   }
+}

@@ -149,5 +149,48 @@ iframe {
    @media (min-width: 768px) {
       padding: 100px;
    }
-   
+}
+
+.gallery {
+   background: var(--backgroundPrimary);
+   min-height: 100vh;
+
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+
+   .heading {
+      font-weight: 700;
+      margin: 20px 0;
+      color: white;
+      
+
+      @media (min-width: 768px) {
+         font-size: 24px;
+         margin: 30px 0;
+      }
+   }
+
+   .images-container {
+      .images {
+         .image {
+            width: 300px;
+            padding: 5px;
+            border: 1px solid orangered;
+            position: relative;
+
+            .actions {
+               position: absolute;
+               top: 10px;
+               right: 10px;
+               font-size: 24px;
+ 
+               
+               .delete {
+                  color: red;
+               }
+            }
+         }
+      }
+   }
 }

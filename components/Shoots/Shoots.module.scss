@@ -30,6 +30,9 @@ section {
                display: flex;
                gap: 20px;
                padding: 10px 0;
+               justify-content: space-between;
+               width: 100%;
+               align-items: center;
 
                @media (min-width: 768px) {
                   font-size: 19px;
@@ -38,11 +41,21 @@ section {
                h1 {
                   font-family: var(--fontPrimary);
                }
+
+               .total {
+                  font-size: 21px;
+                  color: red
+               }
+
+               .total.booked {
+                  color: green;
+               }
             }
 
-            .booked_services, .client, .actions {
+            .booked_services, .client, .actions, .description {
                border-top: 1px solid orangered;
                width: fit-content;
+               padding: 10px 0;;
             }
 
             .booked_services {
@@ -69,18 +82,34 @@ section {
             }
 
             .client {
-               padding: 10px 0;
-
-               span {
+               span {padding: 10px 0;
                   color: orangered;
                }
             }
 
             .actions {
-               padding: 10px 0;
                display: flex;
                align-items: center;
-               gap: 20px;
+               gap: 50px;
+
+               div {
+                  display: flex;
+                  gap: 20px;
+                  align-items: center;
+
+                  button {
+                     font-size: 24px;
+                  }
+
+                  .delete {
+                     color: red;
+                     transition: .3s ease-in;
+                  }
+
+                  .delete:hover {
+                     transform: translateY(-5px);
+                  }
+               }
             }
          }
       }

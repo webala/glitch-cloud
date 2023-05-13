@@ -40,6 +40,7 @@ export type Client = {
 };
 
 export type Shoot = {
+   id: number;
    date: string;
    location: string;
    description: string;

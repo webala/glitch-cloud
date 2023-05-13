@@ -92,7 +92,7 @@ const Services: React.FC = () => {
             toast({
                title: "Error!",
                description: "Please try again later",
-               status: "success",
+               status: "error",
                duration: 9000,
                isClosable: true,
             });

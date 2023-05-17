@@ -18,7 +18,8 @@ section {
          }
 
          @media (min-width: 1028px) {
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: repeat(3, minmax(300px, 500px));
+            place-content: center;
             gap: 30px;
          }
 

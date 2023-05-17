@@ -19,6 +19,7 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { AiFillDelete } from "react-icons/ai";
 import DeleteWarning from "../components/DeleteWarning/DeleteWarning";
+import Upload from "../components/UploadImage/Upload";
 
 export const fetchImages = async () => {
    const response = await axios.get("http://localhost:8000/api/gallery");
@@ -49,7 +50,7 @@ function Gallery() {
    const deleteImageMutation = useMutation(
       async () => {
          const response = await axios.delete(
-            `http://localhost:8000/api/image/${deleteImageId}`
+            `http://localhost:8000/api/image/delete/${deleteImageId}`
          );
          return response.data;
       },
@@ -62,7 +63,7 @@ function Gallery() {
                duration: 9000,
                isClosable: true,
             });
-            queryClient.invalidateQueries(["services"]);
+            queryClient.invalidateQueries(["gallery"]);
          },
          onError: () => {
             toast({
@@ -89,6 +90,7 @@ function Gallery() {
                {isError ? <p>Could load images. Try again later.</p> : null}
             </div>
          </div>
+         {authStatus === 'authenticated' && <Upload />}
 
          <div className="images-container">
             {isSuccess ? (

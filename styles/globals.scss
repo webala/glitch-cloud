@@ -40,7 +40,6 @@ h1 {
 }
 
 form {
-
    .feedback {
       margin-bottom: 20px;
       .error {
@@ -118,14 +117,20 @@ form {
    }
 
    .actions {
+      display: flex;
+      gap: 20px;
     button {
       padding: 5px;
       border-radius: 8px;
-      border: 1px solid orangered;
+      transition: .3s ease-in
     }
 
-    .sumbit {
-      background: orangered;
+    button:hover {
+      transform: translateY(-5px);
+    }
+
+    .submit {
+      background: var(--accentSecondary);
       color: var(--backgroundPrimary);
     }
 

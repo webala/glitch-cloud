@@ -10,12 +10,10 @@ import { fetchImages } from "../../pages/gallery";
 import Link from "next/link";
 
 function OurWork() {
-   const {
-      data: images,
-      isLoading,
-      isError,
-      error,
-   } = useQuery(["gallery"], fetchImages);
+   const { data, isLoading, isError, error } = useQuery(
+      ["gallery"],
+      fetchImages
+   );
 
    if (isLoading) {
       return <div className={style.our_work_container}>Loading ...</div>;
@@ -23,6 +21,12 @@ function OurWork() {
 
    if (isError) {
       return <div className={style.our_work_container}>Error ...</div>;
+   }
+   let images;
+   if (data.length > 9) {
+      images = data.slice(0, 8);
+   } else {
+      images = data
    }
 
    console.log("images: ", images);
@@ -34,13 +38,13 @@ function OurWork() {
                return (
                   <div className={` ${style.item}`} key={index}>
                      {/* <AnimationOnScroll animateIn="animate__fadeInBottomLeft"> */}
-                        <Image
-                           className={style.image}
-                           src={image.download_url}
-                           width={800}
-                           height={800}
-                           alt="image"
-                        />
+                     <Image
+                        className={style.image}
+                        src={image.download_url}
+                        width={800}
+                        height={800}
+                        alt="image"
+                     />
                      {/* </AnimationOnScroll> */}
                   </div>
                );

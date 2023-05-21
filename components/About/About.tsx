@@ -18,7 +18,7 @@ function About() {
                alt="mosh"
             />
 
-            <AnimationOnScroll animateIn="animate__fadeInLeftBig" delay={500}>
+            <AnimationOnScroll animateIn="animate__fadeInLeftBig">
                <p>
                   Meet Brendan, the CEO and founder of Glitch Cloud Photography.
                </p>

@@ -4,13 +4,17 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import CreateService from "../components/CreateService/CreateService";
 import Upload from "../components/UploadImage/Upload";
 import Shoots from "../components/Shoots/Shoots";
+import Navbar from "../components/Navbar/Navbar";
+import DashHome from "../components/DashHome/DashHome";
+import {BiHome} from 'react-icons/bi'
 
 function Dashboard() {
    return (
       <div className="dashboard">
-         <Upload />
+         <Navbar />
+         {/* <Upload />
          <CreateService />
-         <Shoots />
+         <Shoots /> */}
          <Tabs
             colorScheme={`orange`}
             size={`lg`}
@@ -19,14 +23,25 @@ function Dashboard() {
             variant={`line`}
          >
             <TabList>
+               <Tab><BiHome /></Tab>
                <Tab>Shoots</Tab>
+               <Tab>Clients</Tab>
                <Tab>Transactions</Tab>
-               
             </TabList>
             <TabPanels>
                <div className="tab">
                   <TabPanel>
+                     <DashHome />
+                  </TabPanel>
+               </div>
+               <div className="tab">
+                  <TabPanel>
                      <Shoots />
+                  </TabPanel>
+               </div>
+               <div className="tab">
+                  <TabPanel>
+                     <p>Transactins</p>
                   </TabPanel>
                </div>
                <div className="tab">

@@ -23,7 +23,11 @@ const EditForm = ({
       <div>
          <form>
             {Object.entries(editData).map((entry) => {
-               if (entry[0] !== "id") {
+               if (
+                  entry[0] !== "id" &&
+                  entry[0] !== "category" &&
+                  entry[0] !== "quantifiable"
+               ) {
                   return (
                      <div className="field" key={entry[0]}>
                         <label>{entry[0]}</label>

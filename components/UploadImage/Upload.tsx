@@ -53,7 +53,11 @@ function Upload() {
       uploadImageMutation.mutate()
    };
    return (
-      <form className={style.upload} onSubmit={handleImageUpload} encType="multipart/form-data">
+      <form
+         className={style.upload}
+         onSubmit={handleImageUpload}
+         encType="multipart/form-data"
+      >
          <div className="field">
             <label htmlFor="brakes">Upload new image</label>
             <input
@@ -69,7 +73,9 @@ function Upload() {
             />
          </div>
          <div className="actions">
-            <button type="submit">Upload</button>
+            <button className="submit" type="submit">
+               Upload
+            </button>
          </div>
       </form>
    );

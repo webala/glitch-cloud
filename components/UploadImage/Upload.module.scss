@@ -1,3 +1,5 @@
 .upload {
-   color: black;
+   input {
+      color: var(--accentPrimary) !important;
+   }
 }

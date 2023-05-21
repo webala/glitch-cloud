@@ -7,14 +7,13 @@ import Shoots from "../components/Shoots/Shoots";
 import Navbar from "../components/Navbar/Navbar";
 import DashHome from "../components/DashHome/DashHome";
 import {BiHome} from 'react-icons/bi'
+import Clients from "../components/Clients/Clients";
+import Transactions from "../components/Transactions/Transactions";
 
 function Dashboard() {
    return (
       <div className="dashboard">
          <Navbar />
-         {/* <Upload />
-         <CreateService />
-         <Shoots /> */}
          <Tabs
             colorScheme={`orange`}
             size={`lg`}
@@ -41,12 +40,12 @@ function Dashboard() {
                </div>
                <div className="tab">
                   <TabPanel>
-                     <p>Transactins</p>
+                     <Clients />
                   </TabPanel>
                </div>
                <div className="tab">
                   <TabPanel>
-                     <p>Transactins</p>
+                     <Transactions />
                   </TabPanel>
                </div>
             </TabPanels>

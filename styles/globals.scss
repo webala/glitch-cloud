@@ -18,8 +18,8 @@ body {
    --titleFont: "Monoton", cursive;
    --fontPrimary: "Space Mono", monospace;
    --fontSecondary: "Major Mono Display", monospace;
-   --accentPrimary: #BFDB38;
-   --accentSecondary: #1F8A70;
+   --accentPrimary: #bfdb38;
+   --accentSecondary: #1f8a70;
    color: white !important;
 }
 
@@ -50,7 +50,6 @@ form {
       font-weight: 700;
       margin-bottom: 20px;
       color: white;
-      
 
       @media (min-width: 768px) {
          font-size: 21px;
@@ -86,7 +85,8 @@ form {
          color: orangered;
       }
 
-      input, textarea {
+      input,
+      textarea {
          width: 100%;
          padding: 10px 5px;
          border-radius: 8px;
@@ -94,7 +94,7 @@ form {
       }
 
       textarea {
-        height: 100px;
+         height: 100px;
       }
 
       input:focus {
@@ -103,58 +103,58 @@ form {
    }
 
    .checkbox {
-    flex-direction: row;
-    align-items: center;
-    gap: 30px;
+      flex-direction: row;
+      align-items: center;
+      gap: 30px;
 
-    label {
-      width: 150px;
-    }
+      label {
+         width: 150px;
+      }
 
-    input {
-      width: 20px;
-    }
+      input {
+         width: 20px;
+      }
    }
 
    .actions {
       display: flex;
       gap: 20px;
-    button {
-      padding: 5px;
-      border-radius: 8px;
-      transition: .3s ease-in
-    }
+      button {
+         padding: 5px;
+         border-radius: 8px;
+         transition: 0.3s ease-in;
+      }
 
-    button:hover {
-      transform: translateY(-5px);
-    }
+      button:hover {
+         transform: translateY(-5px);
+      }
 
-    .submit {
-      background: var(--accentSecondary);
-      color: var(--backgroundPrimary);
-    }
+      .submit {
+         background: var(--accentSecondary);
+         color: var(--backgroundPrimary);
+      }
 
-    .cancel {
-      border: 1px solid orangered;
-    }
+      .cancel {
+         border: 1px solid orangered;
+      }
    }
 }
 
 .dashboard {
-  background: var(--backgroundPrimary);
-  min-height: 100vh;
+   background: var(--backgroundPrimary);
+   min-height: 100vh;
 }
 
 .selected {
-  border: 1px solid red;
+   border: 1px solid red;
 }
-
 
 iframe {
    background: var(--backgroundPrimary);
 }
 
-.login, .register {
+.login,
+.register {
    background: var(--backgroundPrimary);
    min-height: 100vh;
    display: flex;
@@ -178,7 +178,6 @@ iframe {
       font-weight: 700;
       margin: 20px 0;
       color: white;
-      
 
       @media (min-width: 768px) {
          font-size: 24px;
@@ -188,23 +187,40 @@ iframe {
 
    .images-container {
       .images {
-         .image {
-            width: 300px;
-            padding: 5px;
-            border: 1px solid orangered;
-            position: relative;
+         display: grid;
+         grid-template-columns: repeat(1, minmax(100px, 300px));
+         grid-auto-rows: minmax(150px, auto);
+         gap: 10px;
+         align-items: center;
+         justify-content: center;
+         place-items: center;
 
+         .item {
+            padding: 5px;
+            position: relative;
+            .image {
+               width: 100%;
+               object-fit: contain;
+            }
             .actions {
                position: absolute;
                top: 10px;
                right: 10px;
                font-size: 24px;
- 
-               
+
                .delete {
                   color: red;
                }
             }
+         }
+
+         @media (min-width: 768px) {
+            grid-template-columns: repeat(3, minmax(100px, 300px));
+         }
+
+         @media (min-width: 1028px) {
+            grid-template-columns: repeat(4, minmax(100px, 300px));
+            gap: 30px;
          }
       }
    }

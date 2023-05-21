@@ -50,3 +50,15 @@ export type Shoot = {
    booked_services: BookedService[];
    client?: Client;
 };
+
+export type Transaction = {
+   id: number;
+   shoot?: Shoot;
+   date: string;
+   payment_method: string;
+   amount: number;
+   confirmation_code: string;
+   payment_status: string;
+   payment_status_description: string;
+   payment_currency: string
+}

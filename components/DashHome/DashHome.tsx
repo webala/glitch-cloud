@@ -15,7 +15,7 @@ function DashHome() {
                <span>ksh 5000</span> this week
             </p>
             <p>
-               <span>ksh 5000</span> this month
+               <span>ksh 65000</span> this month
             </p>
             <p>
                <span>100</span> clients served

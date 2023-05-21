@@ -84,25 +84,25 @@ function Gallery() {
    return (
       <div className="gallery">
          <div className="heading">
-            <h1>Gallery</h1>
+            <h1>Glitch photo gallery</h1>
             <div className="feedback">
                {isLoading ? <Spinner color="red.500" /> : null}
                {isError ? <p>Could load images. Try again later.</p> : null}
             </div>
          </div>
-         {authStatus === 'authenticated' && <Upload />}
 
          <div className="images-container">
             {isSuccess ? (
                <div className="images">
                   {images.map((image: GalleryImage, index: number) => {
                      return (
-                        <div key={index} className="image">
+                        <div key={index} className="item">
                            <Image
                               src={image.download_url}
                               width={800}
                               height={800}
                               alt="image"
+                              className="image"
                            />
                            {authStatus === "authenticated" ? (
                               <div className="actions">

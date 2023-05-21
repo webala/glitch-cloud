@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 import style from "./About.module.scss";
 import Image from "next/image";
@@ -5,21 +7,17 @@ import mosh from "../../public/assets/mosh.jpg";
 import { AnimationOnScroll } from "react-animation-on-scroll";
 
 function About() {
-	return (
+   return (
       <div className={style.about}>
-         <AnimationOnScroll animateIn="animate__heartBeat" delay={700}>
-            <h1 className={style.heading}>About</h1>
-         </AnimationOnScroll>
-
+         <h1 className={style.heading}>About</h1>
          <div className={style.about_text_container}>
-            <AnimationOnScroll animateIn="animate__fadeInRight">
-               <Image
-                  className={style.about_image}
-                  width={200}
-                  src={mosh}
-                  alt="mosh"
-               />
-            </AnimationOnScroll>
+            <Image
+               className={style.about_image}
+               width={200}
+               src={mosh}
+               alt="mosh"
+            />
+
             <AnimationOnScroll animateIn="animate__fadeInLeftBig" delay={500}>
                <p>
                   Meet Brendan, the CEO and founder of Glitch Cloud Photography.

@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import "animate.css/animate.min.css";
 import type { AppProps } from 'next/app'
 import{ChakraProvider, extendTheme} from '@chakra-ui/react'
+import "react-slideshow-image/dist/styles.css";
 import '../styles/globals.scss'
 import { Provider } from 'react-redux';
 import store from '../store';

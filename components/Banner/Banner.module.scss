@@ -1,55 +1,80 @@
+/** @format */
+
 .banner {
-    position: relative;
-    background: var(--backgroundSecondary);
-    padding: 100px 5%;
+   position: relative;
+   background: var(--backgroundSecondary);
+   // padding: 50px 0;
+   width: 100%;
 
-    .banner_image {
-        filter: brightness(40%) drop-shadow(5px 5px 40px orangered);
-        width: 100%;
-        height: auto;
-    }
-    .banner_text_container {
-        position: absolute;
-        top: 20%;
-        padding-left: 2%;
+//    @media (min-width: 768px) {
+//        display: flex;
+//        align-items: center;
+//     }
 
-        h1 {
-            font-size: 14px;
-            margin: 10px 0;
-            color: orangered;
-        }
+   .image_container {
+    width: 100%;
+    height: 400px;
 
-        p {
-            font-size: 12px;
-            font-weight: 700;
-        }
-    }
+    // @media (min-width: 768px) {
+    //     width: 400px;
+    // }
 
-    .banner_sub_text_container {
-        position: absolute;
-        bottom: 25%;
-        padding-left: 2%;
-        color: orangered;
-        font-weight: 700;
-        font-size: 9px;
-    }
+      .banner_image {
+         filter: brightness(40%);
+        //  width: 100%;
+         height: 400px;
+         object-fit: cover;
+         height: 400px;
+      }
+   }
 
-    @media (min-width: 700px) {
+   .banner_text_container {
+      position: absolute;
+      top: 20%;
+      padding-left: 2%;
+      z-index: 100;
+      width: 100%;
 
-        padding: 0px 10%;
-        padding-top: 100px;
-        .banner_text_container {
-            h1 {
-                font-size: 36px;
-            }
+      @media (min-width: 768px) {
+         top: 30%;
+      }
+        // display: flex;
+        // flex-direction: column;
+        // align-items: center;
+        // padding: 20px 0;
+      h1 {
+         font-size: 25px;
+         margin-bottom: 10px;
+         color: orangered;
+         font-weight: 700;
+         text-align: center;
 
-            p {
-                font-size: 20px;
-            }
-        }
+         @media (min-width: 768px) {
+            font-size: 32px;
+         }
+      }
 
-        .banner_sub_text_container {
-            font-size: 19px;
-        }
-    }
+      p {
+         font-size: 16px;
+         font-weight: 700;
+         text-align: center;
+
+         @media (min-width: 768px) {
+            font-size: 20px;
+         }
+
+         span {
+            color: var(--accentPrimary);
+         }
+      }
+   }
+
+   .banner_sub_text_container {
+      position: absolute;
+      bottom: 25%;
+      padding-left: 2%;
+      color: orangered;
+      font-weight: 700;
+      font-size: 9px;
+   }
 }

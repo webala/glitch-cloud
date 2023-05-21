@@ -1,5 +1,10 @@
 /** @format */
 
+@font-face {
+   font-family: youngHeart;
+   src: url("../public/assets/fonts/young_heart/Young\ Heart.otf");
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Monoton&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 html,
 body {
@@ -13,7 +18,8 @@ body {
    --titleFont: "Monoton", cursive;
    --fontPrimary: "Space Mono", monospace;
    --fontSecondary: "Major Mono Display", monospace;
-
+   --accentPrimary: #BFDB38;
+   --accentSecondary: #1F8A70;
    color: white !important;
 }
 
@@ -30,7 +36,6 @@ a {
 }
 
 h1 {
-   font-family: var(--fontSecondary);
    color: orangered;
 }
 
@@ -116,11 +121,16 @@ form {
     button {
       padding: 5px;
       border-radius: 8px;
+      border: 1px solid orangered;
     }
 
-    .submit {
+    .sumbit {
       background: orangered;
       color: var(--backgroundPrimary);
+    }
+
+    .cancel {
+      border: 1px solid orangered;
     }
    }
 }
@@ -131,7 +141,7 @@ form {
 }
 
 .selected {
-  border: 1px solid orangered;
+  border: 1px solid red;
 }
 
 

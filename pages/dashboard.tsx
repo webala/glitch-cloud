@@ -8,9 +8,9 @@ import Shoots from "../components/Shoots/Shoots";
 function Dashboard() {
    return (
       <div className="dashboard">
-         {/* <Upload />
+         <Upload />
          <CreateService />
-         <Shoots /> */}
+         <Shoots />
          <Tabs
             colorScheme={`orange`}
             size={`lg`}

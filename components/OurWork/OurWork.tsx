@@ -4,7 +4,6 @@ import React from "react";
 import style from "./OurWork.module.scss";
 import Image from "next/image";
 import { AnimationOnScroll } from "react-animation-on-scroll";
-import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { GalleryImage } from "../../types";
 import { fetchImages } from "../../pages/gallery";
@@ -29,14 +28,12 @@ function OurWork() {
    console.log("images: ", images);
    return (
       <div className={style.our_work_container} id="our_work">
-         <AnimationOnScroll animateIn="animate__heartBeat">
-            <h1 className={style.heading}>Our work</h1>
-         </AnimationOnScroll>
+         {/* <h1 className={style.heading}>Our work</h1> */}
          <div className={style.gallery}>
             {images.map((image: GalleryImage, index: number) => {
                return (
                   <div className={` ${style.item}`} key={index}>
-                     <AnimationOnScroll animateIn="animate__fadeInBottomLeft">
+                     {/* <AnimationOnScroll animateIn="animate__fadeInBottomLeft"> */}
                         <Image
                            className={style.image}
                            src={image.download_url}
@@ -44,13 +41,15 @@ function OurWork() {
                            height={800}
                            alt="image"
                         />
-                     </AnimationOnScroll>
+                     {/* </AnimationOnScroll> */}
                   </div>
                );
             })}
          </div>
-         <div>
-            <Link href="/gallery">View gallery</Link>
+         <div className={style.actions}>
+            <Link href="/gallery">
+               <button className={style.action}>View more photos</button>
+            </Link>
          </div>
       </div>
    );

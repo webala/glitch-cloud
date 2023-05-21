@@ -19,7 +19,7 @@ import {
 import { BookedService, Shoot } from "../../types";
 import { AiFillDelete } from "react-icons/ai";
 import DeleteWarning from "../DeleteWarning/DeleteWarning";
-import { getShootCost } from "../../utils";
+// import { getShootCost } from "../../utils";
 
 function Shoots() {
    const [deleteShootId, setDeleteShootId] = useState<number>();
@@ -133,7 +133,7 @@ function Shoots() {
             </div>
             <div className={style.shoots}>
                {shoots.map((shoot: Shoot, index: number) => {
-                  const shootTotal = getShootCost(shoot.booked_services);
+                  const shootTotal = 700;
                   return (
                      <div key={index} className={style.shoot}>
                         <div className={style.shoot_heading}>

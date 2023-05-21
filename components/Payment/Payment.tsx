@@ -68,6 +68,7 @@ function Payment({ setLoading }: iPayment) {
       {
          onSuccess: (data) => {
             setLoading(false);
+            console.log(data)
             setIframeUrl(data.redirect_url);
             queryClient.invalidateQueries(["transactions"]);
          },

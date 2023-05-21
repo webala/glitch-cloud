@@ -185,7 +185,7 @@ const Services: React.FC = () => {
                            </div>
                         ) : null}
                      </div>
-                     <p>{service.description}</p>
+                     <p className={style.description}>{service.description}</p>
                   </div>
                </AnimationOnScroll>
             ))}
